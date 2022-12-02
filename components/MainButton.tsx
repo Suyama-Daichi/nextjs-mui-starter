@@ -1,12 +1,16 @@
 import React, { FC, ReactNode } from 'react'
 import { Button, ButtonProps } from '@mui/material'
-import { styled } from '@mui/material/styles'
+import { Palette, PaletteColor, styled } from '@mui/material/styles'
 import styles from '../styles/MainButton.module.scss'
 
 interface Props {
     className?: string
     children?: ReactNode
 }
+
+// TODO: wait resolve
+// link: https://github.com/mui/material-ui/issues/35319
+type TempPalette = Palette & { inherit: PaletteColor }
 
 const MainButton: FC<Props & ButtonProps> = ({
     className,
@@ -17,10 +21,10 @@ const MainButton: FC<Props & ButtonProps> = ({
 
     const StyledButton = styled(Button)(
         ({ theme }) => `
-            background-color: ${theme.palette[color].main};
+            background-color: ${(theme.palette as TempPalette)[color].main};
             &:hover,
             &:focus {
-                background-color: ${theme.palette[color].dark};
+                background-color: ${(theme.palette as TempPalette)[color].dark};
             }
       `
     )
