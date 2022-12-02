@@ -5,8 +5,8 @@ import styles from '../styles/Default.module.scss'
 const DefaultNavbarLinks: FC = () => {
     return (
         <div>
-            <Link href="/blog">
-                <a className={styles.navbarLink}>Blog</a>
+            <Link className={styles.navbarLink} href="/blog">
+                Blog
             </Link>
         </div>
     )

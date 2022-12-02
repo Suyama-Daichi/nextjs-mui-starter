@@ -9,6 +9,7 @@ import Image from 'next/image'
 import summaries from '../content/summary.json'
 import { formatPostDate, parsePostDate } from '../src/ui/Blog'
 import SocialsWrapper from '../components/blog/SocialsWrapper'
+import { Link } from '@mui/material'
 
 const Blog: NextPage = () => {
     return (
@@ -34,7 +35,7 @@ const Blog: NextPage = () => {
                                 >
                                     {post.picture ? (
                                         <div className={styles.coverImage}>
-                                            <a
+                                            <Link
                                                 href={`/blog/${encodeURIComponent(
                                                     post.base.replace(
                                                         '.json',
@@ -49,18 +50,18 @@ const Blog: NextPage = () => {
                                                     height="860"
                                                     layout="intrinsic"
                                                 />
-                                            </a>
+                                            </Link>
                                         </div>
                                     ) : null}
                                     <div>
-                                        <a
+                                        <Link
                                             className={styles.postTitle}
                                             href={`/blog/${encodeURIComponent(
                                                 post.base.replace('.json', '')
                                             )}`}
                                         >
                                             {post.title}
-                                        </a>
+                                        </Link>
                                     </div>
                                     <div className={styles.postMetaInfo}>
                                         <p>
@@ -72,13 +73,13 @@ const Blog: NextPage = () => {
                                         />
                                     </div>
                                     <p>{post.preview + ' ...'}</p>
-                                    <a
+                                    <Link
                                         href={`/blog/${encodeURIComponent(
                                             post.base.replace('.json', '')
                                         )}`}
                                     >
                                         Read more
-                                    </a>
+                                    </Link>
                                 </div>
                             )
                         })}

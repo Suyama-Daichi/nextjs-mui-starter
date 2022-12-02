@@ -13,15 +13,17 @@ const SocialsWrapper: FC<Props> = ({ children }) => {
         <div className={styles.allPostsContainer}>
             <div className={styles.socialsPositioner}>
                 <div className={styles.socialsContainer}>
-                    <Link href={literals.socials.twitter}>
-                        <a className={styles.block}>
-                            <Twitter color="primary" />
-                        </a>
+                    <Link
+                        className={styles.block}
+                        href={literals.socials.twitter}
+                    >
+                        <Twitter color="primary" />
                     </Link>
-                    <Link href={literals.socials.mailtoEmailInfo}>
-                        <a className={styles.block}>
-                            <Mail color="primary" />
-                        </a>
+                    <Link
+                        className={styles.block}
+                        href={literals.socials.mailtoEmailInfo}
+                    >
+                        <Mail color="primary" />
                     </Link>
                 </div>
             </div>

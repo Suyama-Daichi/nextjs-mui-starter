@@ -12,43 +12,46 @@ const Footer: FC = () => {
         <div className={styles.footerContainer}>
             <List className={styles.list}>
                 <ListItem className={styles.inlineBlock}>
-                    <Link href="/imprint">
-                        <a className={styles.block}>Imprint</a>
+                    <Link className={styles.block} href={'/imprint'}>
+                        Imprint
                     </Link>
                 </ListItem>
                 <ListItem className={styles.inlineBlock}>
-                    <Link href="/privacy">
-                        <a className={styles.block}>Privacy Policy</a>
+                    <Link className={styles.block} href={'/privacy'}>
+                        Privacy Policy
                     </Link>
                 </ListItem>
                 <ListItem className={styles.inlineBlock}>
-                    <Link href={literals.socials.twitter}>
-                        <a className={styles.block}>
-                            <Twitter />
-                        </a>
+                    <Link
+                        className={styles.block}
+                        href={literals.socials.twitter}
+                    >
+                        <Twitter />
                     </Link>
                 </ListItem>
                 <ListItem className={styles.inlineBlock}>
-                    <Link href={literals.socials.github}>
-                        <a className={styles.block}>
-                            <GitHub />
-                        </a>
+                    <Link
+                        className={styles.block}
+                        href={literals.socials.github}
+                    >
+                        <GitHub />
                     </Link>
                 </ListItem>
                 <ListItem className={styles.inlineBlock}>
-                    <Link href={literals.socials.mailtoEmailInfo}>
-                        <a className={styles.block}>
-                            <Mail />
-                        </a>
+                    <Link
+                        className={styles.block}
+                        href={literals.socials.mailtoEmailInfo}
+                    >
+                        <Mail />
                     </Link>
                 </ListItem>
             </List>
             <footer className={styles.footer}>
                 &copy; {DateTime.now().year}, made with{' '}
                 <Favorite className={styles.icon} /> by{' '}
-                <a href="https://growtogether.team">
+                <Link href="https://growtogether.team">
                     https://growtogether.team
-                </a>
+                </Link>
             </footer>
         </div>
     )

@@ -16,17 +16,15 @@ const Header: FC<Props> = ({ onClick, navbarLinks }) => {
     return (
         <div className={styles.headerBackground}>
             <div className={styles.headerNavbar}>
-                <Link href="/">
-                    <a className={styles.homeLink}>
-                        <Typography
-                            variant="h5"
-                            color="inherit"
-                            component="div"
-                            className={styles.brand}
-                        >
-                            {literals.brand}
-                        </Typography>
-                    </a>
+                <Link className={styles.homeLink} href={'/'}>
+                    <Typography
+                        variant="h5"
+                        color="inherit"
+                        component="div"
+                        className={styles.brand}
+                    >
+                        {literals.brand}
+                    </Typography>
                 </Link>
 
                 <div className={styles.navbarLinks}>{navbarLinks}</div>

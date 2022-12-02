@@ -33,18 +33,18 @@ const SubscribeSection: FC<Props> = ({ onSubscribe, className }) => {
         <div>
             <p className={styles.teaser}>
                 Clone{' '}
-                <a href="https://github.com/liebharc/nextjs-mui-starter">
+                <Link href="https://github.com/liebharc/nextjs-mui-starter">
                     https://github.com/liebharc/nextjs-mui-starter
-                </a>{' '}
+                </Link>{' '}
                 to get started. It&apos;s free!
             </p>
             {success ? (
                 <p className={styles.messageSuccess}>
                     Thanks! Note that this button is only a demo. To get in
                     touch with us check{' '}
-                    <a href="https://github.com/liebharc/nextjs-mui-starter">
+                    <Link href="https://github.com/liebharc/nextjs-mui-starter">
                         https://github.com/liebharc/nextjs-mui-starter
-                    </a>
+                    </Link>
                 </p>
             ) : (
                 <GridContainer

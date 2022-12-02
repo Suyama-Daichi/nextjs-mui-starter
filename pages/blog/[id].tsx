@@ -108,18 +108,20 @@ const BlogEntry: NextPage<Props> = ({ post }) => {
                     />
                     <div className={styles.divRow}>
                         <Link href="/blog">
-                            <a className={styles.block}>Show all posts</a>
+                            <Link className={styles.block} href={''}>
+                                Show all posts
+                            </Link>
                         </Link>
                         <p className={styles.block}> or get in touch:</p>
                         <Link href={literals.socials.twitter}>
-                            <a className={styles.block}>
+                            <Link className={styles.block} href={''}>
                                 <Twitter color="primary" />
-                            </a>
+                            </Link>
                         </Link>
                         <Link href={literals.socials.mailtoEmailInfo}>
-                            <a className={styles.block}>
+                            <Link className={styles.block} href={''}>
                                 <Mail color="primary" />
-                            </a>
+                            </Link>
                         </Link>
                     </div>
                 </div>
