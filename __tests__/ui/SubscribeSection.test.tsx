@@ -1,17 +1,25 @@
+/**
+ * @jest-environment jsdom
+ */
+
 import React from 'react'
-import renderer from 'react-test-renderer'
+import { render } from '@testing-library/react'
 import SubscribeSection from '../../components/landing/SubscribeSection'
+import userEvent from '@testing-library/user-event'
 
 describe('A Subscribe Section', () => {
-    const component = renderer.create(<SubscribeSection />)
     it('renders', () => {
-        const tree = component.toJSON()
-        expect(tree).toMatchSnapshot()
+        const component = render(<SubscribeSection />)
+        expect(component).toMatchSnapshot()
     })
 
-    it('shows a message on button press', () => {
-        component.root.findByType('button').props.onClick()
-        const tree = component.toJSON()
-        expect(tree).toMatchSnapshot()
+    it('shows a message on button press', async () => {
+        const component = render(<SubscribeSection />)
+        const button = component.getByRole('button')
+        await userEvent.click(button)
+        const target = await component.findByText(
+            'We need your consent to contact you'
+        )
+        expect(target).toMatchSnapshot()
     })
 })

@@ -31,6 +31,7 @@ const MainButton: FC<Props & ButtonProps> = ({
 
     return (
         <StyledButton
+            role={'button'}
             {...rest}
             className={styles.dialogButton + ' ' + className}
         >
