@@ -20,7 +20,8 @@
         },
 
         {
-            "type": "pwa-chrome",
+            "type": "chrome",
+            "runtimeExecutable": "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
             "request": "launch",
             "name": "Launch Chrome against localhost",
             "url": "http://localhost:3000",
