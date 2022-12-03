@@ -21,6 +21,7 @@
 
         {
             "type": "chrome",
+            // debug with Brave Browser
             "runtimeExecutable": "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
             "request": "launch",
             "name": "Launch Chrome against localhost",
