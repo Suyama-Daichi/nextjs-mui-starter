@@ -8,6 +8,7 @@ import { CacheProvider } from '@emotion/react'
 import createCache from '@emotion/cache'
 import ChangeTheme from '../components/ChangeTheme'
 import { CssBaseline } from '@mui/material'
+import Background from '../components/Background'
 
 const cache = createCache({
     key: 'css',
@@ -21,7 +22,9 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }): ReactElement => {
                 <ChangeTheme>
                     <CssBaseline />
                     <ReduxProvider store={store}>
-                        <Component {...pageProps} />
+                        <Background>
+                            <Component {...pageProps} />
+                        </Background>
                     </ReduxProvider>
                 </ChangeTheme>
             </CacheProvider>

@@ -1,11 +1,11 @@
 import React, { FC, ReactNode } from 'react'
-import { Card } from '@mui/material'
 import styles from '../styles/Page.module.scss'
 import Head from 'next/head'
-import Navbar from './Navbar'
-import Footer from './Footer'
 import ShortHeader from './ShortHeader'
 import DefaultNavbarLinks from './DefaultNavbarLinks'
+import { Card } from '@mui/material'
+import Navbar from './Navbar'
+import { useRouter } from 'next/router'
 
 interface Props {
     title: string
@@ -27,34 +27,37 @@ const defaultProps: Props = {
     slideNavbar: false,
 }
 
+// TODO: ヘッダー、サイドバーコンポーネント(ログイン時のみ)などはここから呼び出す
 const Page: FC<Props> = ({
     title,
-    className,
     description,
+    className,
     children,
     navbarLinks,
     navbarMenu,
     slideNavbar,
-    header,
 }) => {
+    const router = useRouter()
+
     return (
         <div className={styles.container}>
             <Head>
                 <title>{title}</title>
                 <meta name="description" content={description} />
             </Head>
-            <Navbar
-                navbarLinks={navbarLinks}
-                navbarMenu={navbarMenu}
-                slideNavbar={slideNavbar}
-            />
-            {header}
+            {/* TODO: 複数あるときは配列に切り出してincludeで評価する */}
+            {router.pathname !== '/login' && (
+                <Navbar
+                    navbarLinks={navbarLinks}
+                    navbarMenu={navbarMenu}
+                    slideNavbar={slideNavbar}
+                />
+            )}
             <Card className={styles.main}>
                 <div className={className ? className : styles.mainContent}>
                     {children}
                 </div>
             </Card>
-            <Footer />
         </div>
     )
 }
