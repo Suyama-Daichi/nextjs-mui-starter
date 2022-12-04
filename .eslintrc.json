@@ -21,6 +21,9 @@
         "project": "./tsconfig.json"
     },
     "plugins": ["react", "@typescript-eslint"],
+    "rules": {
+        "react-hooks/exhaustive-deps": "warn"
+    },
     "settings": {
         "react": {
             "version": "detect"
