@@ -35,6 +35,11 @@ const ChangeTheme: FC<Props & GridProps> = ({ children, variant }) => {
                     },
                 },
             },
+            MuiFormLabel: {
+                styleOverrides: {
+                    asterisk: { color: '#FF6A61' },
+                },
+            },
         },
     })
 
