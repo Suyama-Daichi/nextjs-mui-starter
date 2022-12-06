@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { VisibilityOff, Visibility } from '@mui/icons-material'
 import {
     Button,
@@ -12,22 +12,25 @@ import {
 } from '@mui/material'
 import Head from 'next/head'
 import { literals } from '../src/ui/Literals'
-import { useAuth } from '../src/hooks/auth.hook'
+import { useAuth } from '../src/hooks/useAuth'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { LoginFormInput } from '../src/models/loginFormInput.model'
+import { LoginDto } from '../src/models/loginFormInput.dto'
+import { classValidatorResolver } from '@hookform/resolvers/class-validator'
+
+const resolver = classValidatorResolver(LoginDto)
 
 const Login = () => {
     const [visiblePassword, setVisiblePassword] = useState(false)
     const { loginHandler } = useAuth()
-    const { register, handleSubmit } = useForm<LoginFormInput>()
+    const { register, handleSubmit } = useForm<LoginDto>({ resolver })
 
     const handleClickShowPassword = () => {
         setVisiblePassword(!visiblePassword)
     }
 
-    const onSubmit: SubmitHandler<LoginFormInput> = (data) => {
-        const { email, password } = data
-        loginHandler({ name: email, password: password })
+    const onSubmit: SubmitHandler<LoginDto> = (data) => {
+        const { name, password } = data
+        loginHandler({ name, password: password })
     }
 
     return (
@@ -66,7 +69,7 @@ const Login = () => {
                     </Unstable_Grid2>
                     <Unstable_Grid2 mb={2}>
                         <TextField
-                            {...register('email')}
+                            {...register('name')}
                             required
                             id="email"
                             type={'email'}
