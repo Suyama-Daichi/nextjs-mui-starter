@@ -40,7 +40,7 @@ module.exports = (phase) => {
                                 base: ["'self'"],
                                 formAction: ["'self'"],
                                 prefetchSrc: ["'self'"],
-                                connectSrc: ["'self'"],
+                                connectSrc: ["'self' http://localhost:3001 'unsafe-eval'"],
                                 scriptSrc: addDevRule(["'self'"]),
                                 styleSrc: [
                                     "'self'",

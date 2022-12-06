@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { VisibilityOff, Visibility } from '@mui/icons-material'
 import {
     Button,
@@ -12,12 +12,22 @@ import {
 } from '@mui/material'
 import Head from 'next/head'
 import { literals } from '../src/ui/Literals'
+import { useAuth } from '../src/hooks/auth.hook'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { LoginFormInput } from '../src/models/loginFormInput.model'
 
 const Login = () => {
     const [visiblePassword, setVisiblePassword] = useState(false)
+    const { loginHandler } = useAuth()
+    const { register, handleSubmit } = useForm<LoginFormInput>()
 
     const handleClickShowPassword = () => {
         setVisiblePassword(!visiblePassword)
+    }
+
+    const onSubmit: SubmitHandler<LoginFormInput> = (data) => {
+        const { email, password } = data
+        loginHandler({ name: email, password: password })
     }
 
     return (
@@ -56,6 +66,7 @@ const Login = () => {
                     </Unstable_Grid2>
                     <Unstable_Grid2 mb={2}>
                         <TextField
+                            {...register('email')}
                             required
                             id="email"
                             type={'email'}
@@ -67,6 +78,7 @@ const Login = () => {
                     </Unstable_Grid2>
                     <Unstable_Grid2 mb={3}>
                         <TextField
+                            {...register('password')}
                             required
                             id="password"
                             type={visiblePassword ? 'text' : 'password'}
@@ -107,6 +119,7 @@ const Login = () => {
                             size="large"
                             variant="contained"
                             sx={{ borderRadius: '25px' }}
+                            onClick={handleSubmit(onSubmit)}
                         >
                             {'ログイン'}
                         </Button>
