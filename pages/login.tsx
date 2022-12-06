@@ -14,22 +14,26 @@ import Head from 'next/head'
 import { literals } from '../src/ui/Literals'
 import { useAuth } from '../src/hooks/useAuth'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { LoginDto } from '../src/models/loginFormInput.dto'
-import { classValidatorResolver } from '@hookform/resolvers/class-validator'
-
-const resolver = classValidatorResolver(LoginDto)
+import { yupResolver } from '@hookform/resolvers/yup'
+import { LoginInput, schema } from '../src/schema/forms/login'
 
 const Login = () => {
     const [visiblePassword, setVisiblePassword] = useState(false)
     const { loginHandler } = useAuth()
-    const { register, handleSubmit } = useForm<LoginDto>({ resolver })
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm<LoginInput>({
+        resolver: yupResolver(schema),
+    })
 
     const handleClickShowPassword = () => {
         setVisiblePassword(!visiblePassword)
     }
 
-    const onSubmit: SubmitHandler<LoginDto> = (data) => {
-        const { name, password } = data
+    const onSubmit: SubmitHandler<LoginInput> = (data) => {
+        const { email: name, password } = data
         loginHandler({ name, password: password })
     }
 
@@ -69,7 +73,7 @@ const Login = () => {
                     </Unstable_Grid2>
                     <Unstable_Grid2 mb={2}>
                         <TextField
-                            {...register('name')}
+                            {...register('email')}
                             required
                             id="email"
                             type={'email'}
@@ -78,6 +82,9 @@ const Login = () => {
                             fullWidth={true}
                             InputLabelProps={{ shrink: true }}
                         />
+                        <Typography fontSize={2} color={'error'}>
+                            {errors.email?.message}
+                        </Typography>
                     </Unstable_Grid2>
                     <Unstable_Grid2 mb={3}>
                         <TextField
@@ -107,6 +114,9 @@ const Login = () => {
                                 ),
                             }}
                         />
+                        <Typography fontSize={2} color={'error'}>
+                            {errors.email?.message}
+                        </Typography>
                     </Unstable_Grid2>
                     <Unstable_Grid2
                         mb={4}

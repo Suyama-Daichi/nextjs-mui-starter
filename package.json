@@ -20,6 +20,7 @@
         "@emotion/react": "^11.10.5",
         "@emotion/styled": "^11.10.5",
         "@fontsource/roboto": "^4.5.8",
+        "@hookform/resolvers": "^2.9.10",
         "@material-ui/styled-engine-sc": "^5.0.0-alpha.11",
         "@mui/icons-material": "^5.10.16",
         "@mui/material": "^5.10.16",
@@ -42,7 +43,8 @@
         "sass": "^1.56.1",
         "sharp": "^0.31.2",
         "styled-components": "^5.3.6",
-        "uuid": "^9.0.0"
+        "uuid": "^9.0.0",
+        "yup": "^0.32.11"
     },
     "devDependencies": {
         "@babel/cli": "^7.19.3",
