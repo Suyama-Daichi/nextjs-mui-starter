@@ -18,12 +18,8 @@ export const useAuth = () => {
         accessToken?: string,
         redirectTo = '/dashboard'
     ) => {
-        try {
-            await verifyAccessToken(accessToken)
-            router.push(redirectTo)
-        } catch (error) {
-            router.replace('/login')
-        }
+        const isVerified = (await verifyAccessToken(accessToken)).data
+        isVerified ? router.push(redirectTo) : router.replace('/login')
     }
 
     return { loginHandler, verifyToken }
