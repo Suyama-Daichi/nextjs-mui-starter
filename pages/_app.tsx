@@ -9,6 +9,7 @@ import createCache from '@emotion/cache'
 import ChangeTheme from '../components/ChangeTheme'
 import { CssBaseline } from '@mui/material'
 import Background from '../components/Background'
+import { RecoilRoot } from 'recoil'
 
 const cache = createCache({
     key: 'css',
@@ -23,7 +24,9 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }): ReactElement => {
                     <CssBaseline />
                     <ReduxProvider store={store}>
                         <Background>
-                            <Component {...pageProps} />
+                            <RecoilRoot>
+                                <Component {...pageProps} />
+                            </RecoilRoot>
                         </Background>
                     </ReduxProvider>
                 </ChangeTheme>

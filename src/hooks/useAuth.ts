@@ -1,12 +1,30 @@
-import { useCallback } from 'react'
-import { login } from '../../pages/api/auth'
+import { login, verifyAccessToken } from '../../pages/api/auth'
 import { LoginInput } from '../schema/forms/login'
+import { useRouter } from 'next/router'
+import Cookies from 'js-cookie'
 
 export const useAuth = () => {
-    const loginHandler = useCallback(async (loginInput: LoginInput) => {
+    const router = useRouter()
+    const loginHandler = async (loginInput: LoginInput) => {
         const { email: name, password } = loginInput
-        return await login(name, password)
-    }, [])
+        const {
+            accessToken: { jwtToken: accessJwt },
+        } = (await login(name, password)).data
+        Cookies.set('accessToken', accessJwt)
+        return accessJwt
+    }
 
-    return { loginHandler }
+    const verifyToken = async (
+        accessToken?: string,
+        redirectTo = '/dashboard'
+    ) => {
+        try {
+            await verifyAccessToken(accessToken)
+            router.push(redirectTo)
+        } catch (error) {
+            router.replace('/login')
+        }
+    }
+
+    return { loginHandler, verifyToken }
 }

@@ -10,8 +10,11 @@ const Landing: NextPage = () => {
             title={literals.brand}
             description={literals.defaultPageDescription}
         >
-            <Link style={{ backgroundColor: 'red' }} href={'/login'}>
-                ログインページへ
+            <Link style={{ backgroundColor: 'blue' }} href={'/dashboard'}>
+                ダッシュボード
+            </Link>
+            <Link style={{ backgroundColor: 'green' }} href={'/login'}>
+                ログイン
             </Link>
             {/* TODO: ページ固有のコンポーネントはここから呼び出す */}
         </Page>

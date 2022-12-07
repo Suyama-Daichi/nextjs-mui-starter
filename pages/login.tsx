@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { VisibilityOff, Visibility } from '@mui/icons-material'
 import {
     Button,
@@ -16,10 +16,12 @@ import { useAuth } from '../src/hooks/useAuth'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { LoginInput, schema } from '../src/schema/forms/login'
+import { useRouter } from 'next/router'
+import Cookies from 'js-cookie'
 
 const Login = () => {
     const [visiblePassword, setVisiblePassword] = useState(false)
-    const { loginHandler } = useAuth()
+    const { loginHandler, verifyToken } = useAuth()
     const {
         register,
         handleSubmit,
@@ -27,14 +29,20 @@ const Login = () => {
     } = useForm<LoginInput>({
         resolver: yupResolver(schema),
     })
+    const router = useRouter()
+
+    useEffect(() => {
+        verifyToken(Cookies.get('accessToken'))
+    }, [])
 
     const handleClickShowPassword = () => {
         setVisiblePassword(!visiblePassword)
     }
 
     const onSubmit: SubmitHandler<LoginInput> = async (data) => {
-        const result = await loginHandler(data)
-        console.log(result)
+        const jwt = await loginHandler(data)
+        if (!jwt) return
+        router.push('/dashboard')
     }
 
     return (
