@@ -32,9 +32,9 @@ const Login = () => {
         setVisiblePassword(!visiblePassword)
     }
 
-    const onSubmit: SubmitHandler<LoginInput> = (data) => {
-        const { email: name, password } = data
-        loginHandler({ name, password: password })
+    const onSubmit: SubmitHandler<LoginInput> = async (data) => {
+        const result = await loginHandler(data)
+        console.log(result)
     }
 
     return (

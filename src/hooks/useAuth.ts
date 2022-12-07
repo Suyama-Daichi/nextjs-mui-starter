@@ -1,10 +1,10 @@
 import { useCallback } from 'react'
 import { login } from '../../pages/api/auth'
-import { LoginDto } from '../models/loginFormInput.dto'
+import { LoginInput } from '../schema/forms/login'
 
 export const useAuth = () => {
-    const loginHandler = useCallback(async (loginInput: LoginDto) => {
-        const { name, password } = loginInput
+    const loginHandler = useCallback(async (loginInput: LoginInput) => {
+        const { email: name, password } = loginInput
         return await login(name, password)
     }, [])
 

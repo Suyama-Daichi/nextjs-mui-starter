@@ -6,6 +6,5 @@ export const login = async (name: string, password: string) => {
         .catch((e) => {
             console.log(e)
         })
-    console.log(result)
     return result
 }
