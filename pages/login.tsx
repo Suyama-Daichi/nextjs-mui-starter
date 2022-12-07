@@ -52,8 +52,13 @@ const Login = () => {
                 <meta name="description" content="ログインページ" />
             </Head>
             <AuthCard title="ログイン">
-                <>
-                    <Unstable_Grid2 mb={4}>
+                <Unstable_Grid2 container>
+                    <Unstable_Grid2
+                        xs={12}
+                        mb={4}
+                        display="flex"
+                        justifyContent="center"
+                    >
                         <Typography>
                             {literals.brand}
                             のご利用には、アカウント登録が必要です。
@@ -62,7 +67,7 @@ const Login = () => {
                             </Link>
                         </Typography>
                     </Unstable_Grid2>
-                    <Unstable_Grid2 mb={2}>
+                    <Unstable_Grid2 xs={12} sm={8} smOffset={2} mb={2}>
                         <TextField
                             {...register('email')}
                             required
@@ -77,7 +82,7 @@ const Login = () => {
                             {errors.email?.message}
                         </Typography>
                     </Unstable_Grid2>
-                    <Unstable_Grid2 mb={3}>
+                    <Unstable_Grid2 xs={12} sm={8} smOffset={2} mb={3}>
                         <TextField
                             {...register('password')}
                             required
@@ -110,6 +115,7 @@ const Login = () => {
                         </Typography>
                     </Unstable_Grid2>
                     <Unstable_Grid2
+                        xs={12}
                         mb={4}
                         display="flex"
                         justifyContent="center"
@@ -118,7 +124,11 @@ const Login = () => {
                             パスワードを忘れた場合
                         </Link>
                     </Unstable_Grid2>
-                    <Unstable_Grid2 display="flex" justifyContent="center">
+                    <Unstable_Grid2
+                        display="flex"
+                        justifyContent="center"
+                        xs={12}
+                    >
                         <Button
                             size="large"
                             variant="contained"
@@ -128,7 +138,7 @@ const Login = () => {
                             {'ログイン'}
                         </Button>
                     </Unstable_Grid2>
-                </>
+                </Unstable_Grid2>
             </AuthCard>
         </>
     )

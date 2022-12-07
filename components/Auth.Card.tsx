@@ -1,4 +1,10 @@
-import { Card, CardProps, Typography, Unstable_Grid2 } from '@mui/material'
+import {
+    Card,
+    CardContent,
+    CardProps,
+    Typography,
+    Unstable_Grid2,
+} from '@mui/material'
 
 type Props = {
     children: React.ReactNode
@@ -6,24 +12,23 @@ type Props = {
 }
 export const AuthCard = ({ children, title, ...rest }: Props & CardProps) => {
     return (
-        <Card
-            {...rest}
-            sx={{
-                minWidth: '50%',
-                maxWidth: '80%',
-                py: '4rem',
-                px: '12rem',
-                borderRadius: '20px',
-            }}
-        >
-            <Unstable_Grid2>
-                <Unstable_Grid2 mb={2} display="flex" justifyContent="center">
-                    <Typography fontSize={22} fontWeight="bold">
-                        {title}
-                    </Typography>
-                </Unstable_Grid2>
-                {children}
+        <Unstable_Grid2 container>
+            <Unstable_Grid2 xs={10} xsOffset={1} sm={8} smOffset={2}>
+                <Card {...rest} sx={{ borderRadius: '20px' }}>
+                    <CardContent>
+                        <Unstable_Grid2
+                            mb={2}
+                            display="flex"
+                            justifyContent="center"
+                        >
+                            <Typography fontSize={22} fontWeight="bold">
+                                {title}
+                            </Typography>
+                        </Unstable_Grid2>
+                        {children}
+                    </CardContent>
+                </Card>
             </Unstable_Grid2>
-        </Card>
+        </Unstable_Grid2>
     )
 }

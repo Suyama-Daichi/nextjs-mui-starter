@@ -55,67 +55,83 @@ const ResetPassword = () => {
             </Head>
 
             <AuthCard title="パスワード再設定">
-                <Unstable_Grid2 mb={4}>
-                    <Typography>新しいパスワードを設定します</Typography>
-                </Unstable_Grid2>
-                <Unstable_Grid2 mb={2}>
-                    <TextField
-                        {...register('code')}
-                        required
-                        id="code"
-                        type={'text'}
-                        label="コード"
-                        placeholder="000000"
-                        fullWidth={true}
-                        InputLabelProps={{ shrink: true }}
-                    />
-                    <Typography fontSize={2} color={'error'}>
-                        {errors.code?.message}
-                    </Typography>
-                    <Typography
-                        fontSize={2}
-                        color={'InfoText'}
-                        justifySelf="center"
+                <Unstable_Grid2 container>
+                    <Unstable_Grid2
+                        xs={12}
+                        sm={8}
+                        smOffset={2}
+                        mb={4}
+                        display="flex"
+                        justifyContent="center"
                     >
-                        コードが届かない場合
-                        <Button
-                            disabled={!!resendComplete}
-                            sx={{ ml: 2 }}
-                            variant="outlined"
-                            size="small"
-                            onClick={resendCode}
+                        <Typography>新しいパスワードを設定します</Typography>
+                    </Unstable_Grid2>
+                    <Unstable_Grid2 xs={12} sm={8} smOffset={2} mb={2}>
+                        <TextField
+                            {...register('code')}
+                            required
+                            id="code"
+                            type={'text'}
+                            label="コード"
+                            placeholder="000000"
+                            fullWidth={true}
+                            InputLabelProps={{ shrink: true }}
+                        />
+                        <Typography fontSize={2} color={'error'}>
+                            {errors.code?.message}
+                        </Typography>
+                        <Typography
+                            fontSize={2}
+                            color={'InfoText'}
+                            justifySelf="center"
                         >
-                            再送
-                        </Button>
-                        {resendComplete && `${resendComplete}に再送しました`}
-                    </Typography>
-                </Unstable_Grid2>
-                <Unstable_Grid2 mb={2}>
-                    <PasswordForm
-                        id="password"
-                        label="新しいパスワード"
-                        register={{ ...register('password') }}
-                    />
-                </Unstable_Grid2>
-                <Unstable_Grid2 mb={2}>
-                    <PasswordForm
-                        id="passwordConfirm"
-                        label="新しいパスワード(確認)"
-                        register={{ ...register('passwordConfirm') }}
-                    />
-                    <Typography fontSize={2} color={'error'}>
-                        {errors.passwordConfirm?.message}
-                    </Typography>
-                </Unstable_Grid2>
-                <Unstable_Grid2 display="flex" justifyContent="center">
-                    <Button
-                        size="large"
-                        variant="contained"
-                        sx={{ borderRadius: '25px' }}
-                        onClick={handleSubmit(onSubmit)}
+                            コードが届かない場合
+                            <Button
+                                disabled={!!resendComplete}
+                                sx={{ ml: 2 }}
+                                variant="outlined"
+                                size="small"
+                                onClick={resendCode}
+                            >
+                                再送
+                            </Button>
+                            {resendComplete &&
+                                `${resendComplete}に再送しました`}
+                        </Typography>
+                    </Unstable_Grid2>
+                    <Unstable_Grid2 xs={12} sm={8} smOffset={2} mb={2}>
+                        <PasswordForm
+                            id="password"
+                            label="新しいパスワード"
+                            register={{ ...register('password') }}
+                        />
+                    </Unstable_Grid2>
+                    <Unstable_Grid2 xs={12} sm={8} smOffset={2} mb={2}>
+                        <PasswordForm
+                            id="passwordConfirm"
+                            label="新しいパスワード(確認)"
+                            register={{ ...register('passwordConfirm') }}
+                        />
+                        <Typography fontSize={2} color={'error'}>
+                            {errors.passwordConfirm?.message}
+                        </Typography>
+                    </Unstable_Grid2>
+                    <Unstable_Grid2
+                        xs={12}
+                        sm={8}
+                        smOffset={2}
+                        display="flex"
+                        justifyContent="center"
                     >
-                        {'変更'}
-                    </Button>
+                        <Button
+                            size="large"
+                            variant="contained"
+                            sx={{ borderRadius: '25px' }}
+                            onClick={handleSubmit(onSubmit)}
+                        >
+                            {'変更'}
+                        </Button>
+                    </Unstable_Grid2>
                 </Unstable_Grid2>
             </AuthCard>
         </>
