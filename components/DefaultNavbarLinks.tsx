@@ -1,13 +1,24 @@
-import Link from 'next/link'
 import React, { FC } from 'react'
 import styles from '../styles/Default.module.scss'
+import { Button } from '@mui/material'
+import Cookies from 'js-cookie'
+import { useRouter } from 'next/router'
 
 const DefaultNavbarLinks: FC = () => {
+    const router = useRouter()
+    const onClickLogout = () => {
+        Cookies.remove('accessToken')
+        router.replace('/login')
+    }
     return (
         <div>
-            <Link className={styles.navbarLink} href="/blog">
-                Blog
-            </Link>
+            <Button
+                variant="text"
+                className={styles.navbarLink}
+                onClick={onClickLogout}
+            >
+                ログアウト
+            </Button>
         </div>
     )
 }
