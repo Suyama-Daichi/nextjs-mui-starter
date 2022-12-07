@@ -26,7 +26,7 @@ export const forgotPassword = async (name: string) => {
 export const resetPassword = async (
     name: string,
     password: string,
-    code: string
+    code: number
 ) => {
     const result = await axiosClient.post<'SUCCESS'>(
         'http://localhost:3001/auth/reset-password',

@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { VisibilityOff, Visibility } from '@mui/icons-material'
 import {
     Button,
-    Card,
     IconButton,
     InputAdornment,
     Link,
@@ -18,6 +17,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { LoginInput, schema } from '../src/schema/forms/login'
 import { useRouter } from 'next/router'
 import Cookies from 'js-cookie'
+import { AuthCard } from '../components/Auth.Card'
 
 const Login = () => {
     const [visiblePassword, setVisiblePassword] = useState(false)
@@ -51,25 +51,8 @@ const Login = () => {
                 <title>ログイン</title>
                 <meta name="description" content="ログインページ" />
             </Head>
-            <Card
-                sx={{
-                    minWidth: '50%',
-                    maxWidth: '80%',
-                    py: '4rem',
-                    px: '12rem',
-                    borderRadius: '20px',
-                }}
-            >
-                <Unstable_Grid2>
-                    <Unstable_Grid2
-                        mb={2}
-                        display="flex"
-                        justifyContent="center"
-                    >
-                        <Typography fontSize={22} fontWeight="bold">
-                            ログイン
-                        </Typography>
-                    </Unstable_Grid2>
+            <AuthCard title="ログイン">
+                <>
                     <Unstable_Grid2 mb={4}>
                         <Typography>
                             {literals.brand}
@@ -131,7 +114,7 @@ const Login = () => {
                         display="flex"
                         justifyContent="center"
                     >
-                        <Link href="/forgot-password" underline="hover">
+                        <Link href="/ForgotPassword" underline="hover">
                             パスワードを忘れた場合
                         </Link>
                     </Unstable_Grid2>
@@ -145,8 +128,8 @@ const Login = () => {
                             {'ログイン'}
                         </Button>
                     </Unstable_Grid2>
-                </Unstable_Grid2>
-            </Card>
+                </>
+            </AuthCard>
         </>
     )
 }
