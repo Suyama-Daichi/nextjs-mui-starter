@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { DateTime } from 'luxon'
 import { List, ListItem } from '@mui/material'
 import { Mail, Twitter, Favorite, GitHub } from '@mui/icons-material'
-import { literals } from '../src/ui/Literals'
+import { literals } from '../ui/Literals'
 
 const Footer: FC = () => {
     return (

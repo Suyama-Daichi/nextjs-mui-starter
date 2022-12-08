@@ -3,7 +3,7 @@ import styles from '../styles/HeaderNavBar.module.scss'
 import Link from 'next/link'
 import { IconButton, Slide, Typography, useScrollTrigger } from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu'
-import { literals } from '../src/ui/Literals'
+import { literals } from '../ui/Literals'
 
 interface ScrollProps {
     children: React.ReactElement

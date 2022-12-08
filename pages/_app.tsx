@@ -1,4 +1,4 @@
-import '../styles/globals.css'
+import '../src/styles/globals.css'
 import { AppProps } from 'next/app'
 import React, { FC, ReactElement } from 'react'
 import { StyledEngineProvider } from '@mui/material/styles'
@@ -6,9 +6,9 @@ import { Provider as ReduxProvider } from 'react-redux'
 import { store } from '../src/ui/redux/store'
 import { CacheProvider } from '@emotion/react'
 import createCache from '@emotion/cache'
-import ChangeTheme from '../components/ChangeTheme'
+import ChangeTheme from '../src/components/ChangeTheme'
 import { CssBaseline } from '@mui/material'
-import Background from '../components/Background'
+import Background from '../src/components/Background'
 import { RecoilRoot } from 'recoil'
 
 const cache = createCache({

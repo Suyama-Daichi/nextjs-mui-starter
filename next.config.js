@@ -14,7 +14,7 @@ module.exports = (phase) => {
     }
 
     return {
-        reactStrictMode: true,
+        reactStrictMode: false,
         compress: true,
         images: {
             // These are the values documented by Material UI: https://mui.com/customization/breakpoints/

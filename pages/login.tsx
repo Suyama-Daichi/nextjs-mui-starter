@@ -17,7 +17,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { LoginInput, schema } from '../src/schema/forms/login'
 import { useRouter } from 'next/router'
 import Cookies from 'js-cookie'
-import { AuthCard } from '../components/Auth.Card'
+import { AuthCard } from '../src/components/Auth.Card'
 
 const Login = () => {
     const [visiblePassword, setVisiblePassword] = useState(false)

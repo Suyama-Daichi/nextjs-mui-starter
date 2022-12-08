@@ -25,5 +25,11 @@
         "__mocks__/styleMock.js",
         "__mocks__/fileMock.js"
     ],
+    "paths": {
+        "@/*": ["src/*"],
+        "@components/*": ["src/common/*"],
+        "@services/*": ["src/services/*"],
+        "@controllers/*": ["src/controllers/*"]
+    },
     "exclude": ["node_modules", "cypress"]
 }

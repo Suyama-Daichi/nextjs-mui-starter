@@ -2,12 +2,12 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Button, TextField, Typography, Unstable_Grid2 } from '@mui/material'
 import Head from 'next/head'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { PasswordForm } from '../components/PasswordForm'
+import { PasswordForm } from '../src/components/PasswordForm'
 import { useAuth } from '../src/hooks/useAuth'
 import { ResetPasswordInput, schema } from '../src/schema/forms/resetPassword'
 import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
-import { AuthCard } from '../components/Auth.Card'
+import { AuthCard } from '../src/components/Auth.Card'
 
 const ResetPassword = () => {
     const { restPasswordHandler, forgotPasswordHandler } = useAuth()

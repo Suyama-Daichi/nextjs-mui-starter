@@ -1,7 +1,7 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import React from 'react'
 
-import Page from '../../components/Page'
+import Page from '../../src/components/Page'
 import ErrorPage from 'next/error'
 import styles from '../../styles/Blog.module.scss'
 import Link from 'next/link'

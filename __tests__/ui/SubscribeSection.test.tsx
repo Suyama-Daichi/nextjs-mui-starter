@@ -4,7 +4,7 @@
 
 import React from 'react'
 import { render } from '@testing-library/react'
-import SubscribeSection from '../../components/landing/SubscribeSection'
+import SubscribeSection from '../../src/components/landing/SubscribeSection'
 import userEvent from '@testing-library/user-event'
 
 describe('A Subscribe Section', () => {

@@ -5,9 +5,9 @@ import styles from '../../styles/SubscribeSection.module.scss'
 import GridContainer from '../GridContainer'
 import GridItem from '../GridItem'
 import MainButton from '../MainButton'
-import { isFailure } from '../../src/domain/FunctionalTypes'
+import { isFailure } from '../../domain/FunctionalTypes'
 import Link from 'next/link'
-import { newSubscription } from '../../src/domain/Subscription'
+import { newSubscription } from '../../domain/Subscription'
 
 interface Props {
     onSubscribe?: (email: string) => void

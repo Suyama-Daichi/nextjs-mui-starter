@@ -5,7 +5,7 @@ import GridItem from './GridItem'
 import MainButton from './MainButton'
 import Link from 'next/link'
 import { Typography } from '@mui/material'
-import { literals } from '../src/ui/Literals'
+import { literals } from '../ui/Literals'
 
 interface Props {
     onClick?: MouseEventHandler<HTMLButtonElement>
