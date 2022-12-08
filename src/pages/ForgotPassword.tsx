@@ -2,10 +2,10 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Button, TextField, Typography, Unstable_Grid2 } from '@mui/material'
 import Head from 'next/head'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { useAuth } from '../src/hooks/useAuth'
-import { ForgotPasswordEmail, schema } from '../src/schema/forms/forgotPassword'
+import { useAuth } from '../hooks/useAuth'
+import { ForgotPasswordEmail, schema } from '../schema/forms/forgotPassword'
 import { useRouter } from 'next/router'
-import { AuthCard } from '../src/components/Auth.Card'
+import { AuthCard } from '../components/Auth.Card'
 
 const ForgotPassword = () => {
     const { forgotPasswordHandler } = useAuth()

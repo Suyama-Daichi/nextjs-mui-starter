@@ -1,15 +1,15 @@
 import type { GetServerSideProps, NextPage } from 'next'
 import React from 'react'
 
-import Page from '../../src/components/Page'
+import Page from '../../components/Page'
 import ErrorPage from 'next/error'
 import styles from '../../styles/Blog.module.scss'
 import Link from 'next/link'
-import { formatPostDate } from '../../src/ui/Blog'
+import { formatPostDate } from '../../ui/Blog'
 import { Mail, Twitter } from '@mui/icons-material'
 import Image from 'next/image'
-import { literals } from '../../src/ui/Literals'
-import { defaultErrorHandler } from '../../src/ui/DefaultErrorHandler'
+import { literals } from '../../ui/Literals'
+import { defaultErrorHandler } from '../../ui/DefaultErrorHandler'
 
 interface Post {
     title: string

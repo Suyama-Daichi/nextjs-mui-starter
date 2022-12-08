@@ -1,8 +1,8 @@
 import { Link } from '@mui/material'
 import type { NextPage } from 'next'
 
-import Page from '../src/components/Page'
-import { literals } from '../src/ui/Literals'
+import Page from '../components/Page'
+import { literals } from '../ui/Literals'
 
 const Landing: NextPage = () => {
     return (

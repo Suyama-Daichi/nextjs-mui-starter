@@ -1,6 +1,6 @@
-import { axiosClient } from '../../src/libs/axios'
-import { CodeDeliveryDetail } from '../../src/models/CodeDeliveryDetail'
-import { CognitoUserSession } from '../../src/models/CognitoUserSession'
+import { axiosClient } from '../../libs/axios'
+import { CodeDeliveryDetail } from '../../models/CodeDeliveryDetail'
+import { CognitoUserSession } from '../../models/CognitoUserSession'
 
 export const login = async (name: string, password: string) => {
     const result = await axiosClient.post<CognitoUserSession>(
