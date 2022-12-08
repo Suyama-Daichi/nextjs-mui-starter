@@ -10,14 +10,14 @@ import {
     Unstable_Grid2,
 } from '@mui/material'
 import Head from 'next/head'
-import { literals } from '../ui/Literals'
-import { useAuth } from '../hooks/useAuth'
+import { literals } from '@/ui/Literals'
+import { useAuth } from '@hooks/useAuth'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { LoginInput, schema } from '../schema/forms/login'
+import { LoginInput, schema } from '@/schema/forms/login'
 import { useRouter } from 'next/router'
 import Cookies from 'js-cookie'
-import { AuthCard } from '../components/Auth.Card'
+import { AuthCard } from '@/components/Auth.Card'
 
 const Login = () => {
     const [visiblePassword, setVisiblePassword] = useState(false)

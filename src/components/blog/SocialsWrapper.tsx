@@ -1,8 +1,8 @@
 import React, { FC, ReactNode } from 'react'
-import styles from '../../styles/Blog.module.scss'
+import styles from '@/styles/Blog.module.scss'
 import { Mail, Twitter } from '@mui/icons-material'
 import Link from 'next/link'
-import { literals } from '../../ui/Literals'
+import { literals } from '@/ui/Literals'
 
 interface Props {
     children?: ReactNode

@@ -1,6 +1,6 @@
 import React, { FC, MouseEventHandler, useState } from 'react'
 import { Button } from '@mui/material'
-import styles from '../../styles/Default.module.scss'
+import styles from '@/styles/Default.module.scss'
 import CheckIcon from '@mui/icons-material/Check'
 
 interface Props {

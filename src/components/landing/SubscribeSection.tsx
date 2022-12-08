@@ -1,13 +1,13 @@
 import React, { FC, useState } from 'react'
 
 import { Checkbox, FormControlLabel, TextField } from '@mui/material'
-import styles from '../../styles/SubscribeSection.module.scss'
-import GridContainer from '../GridContainer'
-import GridItem from '../GridItem'
-import MainButton from '../MainButton'
-import { isFailure } from '../../domain/FunctionalTypes'
+import styles from '@styles/SubscribeSection.module.scss'
+import GridContainer from '@components/GridContainer'
+import GridItem from '@components/GridItem'
+import MainButton from '@components/MainButton'
+import { isFailure } from '@/domain/FunctionalTypes'
 import Link from 'next/link'
-import { newSubscription } from '../../domain/Subscription'
+import { newSubscription } from '@/domain/Subscription'
 
 interface Props {
     onSubscribe?: (email: string) => void

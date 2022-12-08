@@ -3,12 +3,12 @@ import {
     verifyAccessToken,
     forgotPassword,
     resetPassword,
-} from '../pages/api/auth'
-import { LoginInput } from '../schema/forms/login'
+} from '@/pages/api/auth'
+import { LoginInput } from '@/schema/forms/login'
 import { useRouter } from 'next/router'
 import Cookies from 'js-cookie'
-import { ForgotPasswordEmail } from '../schema/forms/forgotPassword'
-import { ResetPasswordInput } from '../schema/forms/resetPassword'
+import { ForgotPasswordEmail } from '@/schema/forms/forgotPassword'
+import { ResetPasswordInput } from '@/schema/forms/resetPassword'
 
 export const useAuth = () => {
     const router = useRouter()

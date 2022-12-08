@@ -1,6 +1,6 @@
 import React, { FC, ReactNode } from 'react'
 import { Grid, GridProps } from '@mui/material'
-import styles from '../styles/Grid.module.scss'
+import styles from '@styles/Grid.module.scss'
 
 interface Props {
     className?: string

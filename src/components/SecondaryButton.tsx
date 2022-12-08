@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react'
 import { Button, ButtonProps } from '@mui/material'
 import { Palette, PaletteColor, styled } from '@mui/material/styles'
-import styles from '../styles/SecondaryButton.module.scss'
+import styles from '@styles/SecondaryButton.module.scss'
 
 interface Props {
     className?: string

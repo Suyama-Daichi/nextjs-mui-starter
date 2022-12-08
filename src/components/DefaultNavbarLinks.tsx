@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import styles from '../styles/Default.module.scss'
+import styles from '@styles/Default.module.scss'
 import { Button } from '@mui/material'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/router'

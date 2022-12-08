@@ -1,5 +1,4 @@
-import * as yup from 'yup'
-import { object, SchemaOf, setLocale } from 'yup'
+import { object, SchemaOf, setLocale, string } from 'yup'
 
 setLocale({
     mixed: {
@@ -22,7 +21,7 @@ export interface LoginInput {
 
 export const schema: SchemaOf<LoginInput> = object()
     .shape({
-        email: yup.string().email().required(),
-        password: yup.string().required(),
+        email: string().email().required(),
+        password: string().required(),
     })
     .required()

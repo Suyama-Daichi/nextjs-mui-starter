@@ -1,10 +1,10 @@
 import React, { FC, ReactNode } from 'react'
-import styles from '../styles/Page.module.scss'
+import styles from '@/styles/Page.module.scss'
 import Head from 'next/head'
-import ShortHeader from './ShortHeader'
-import DefaultNavbarLinks from './DefaultNavbarLinks'
+import ShortHeader from '@components/ShortHeader'
+import DefaultNavbarLinks from '@components/DefaultNavbarLinks'
 import { Card } from '@mui/material'
-import Navbar from './Navbar'
+import Navbar from '@components/Navbar'
 import { useRouter } from 'next/router'
 
 interface Props {

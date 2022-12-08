@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react'
-import styles from '../styles/InfoArea.module.scss'
+import styles from '@styles/InfoArea.module.scss'
 import classNames from 'classnames'
 
 interface Props {

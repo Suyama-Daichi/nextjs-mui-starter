@@ -1,5 +1,5 @@
 import React, { FC, ReactNode, useState } from 'react'
-import styles from '../styles/ExpandingCard.module.scss'
+import styles from '@styles/ExpandingCard.module.scss'
 import ExpandLessIcon from '@mui/icons-material/ExpandLess'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import {

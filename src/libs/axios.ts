@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios'
-import { APIErrorHandler } from '../utils/APIErrorHandler'
+import { APIErrorHandler } from '@/utils/APIErrorHandler'
 
 export class ApiError extends Error {
     status?: string
