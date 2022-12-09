@@ -4,13 +4,12 @@ import React from 'react'
 import Page from '@components/Page'
 import { literals } from '@/ui/Literals'
 
-const Blog: NextPage = () => {
+const Dashboard: NextPage = () => {
     return (
-        <Page
-            title={`${literals.brand} - Dashboard`}
-            description="Dashboard"
-        ></Page>
+        <Page title={`${literals.brand} - Dashboard`} description="Dashboard">
+            <h1>ここはダッシュボード画面です</h1>
+        </Page>
     )
 }
 
-export default Blog
+export default Dashboard

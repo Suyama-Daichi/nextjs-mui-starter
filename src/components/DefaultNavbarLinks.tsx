@@ -12,13 +12,15 @@ const DefaultNavbarLinks: FC = () => {
     }
     return (
         <div>
-            <Button
-                variant="text"
-                className={styles.navbarLink}
-                onClick={onClickLogout}
-            >
-                ログアウト
-            </Button>
+            {Cookies.get('accessToken') && (
+                <Button
+                    variant="text"
+                    className={styles.navbarLink}
+                    onClick={onClickLogout}
+                >
+                    ログアウト
+                </Button>
+            )}
         </div>
     )
 }
