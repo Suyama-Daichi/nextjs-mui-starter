@@ -41,7 +41,7 @@ export const useAuth = () => {
         accessToken?: string,
         redirectTo = '/dashboard'
     ) => {
-        const isVerified = (await verifyAccessToken(accessToken)).data
+        const isVerified = (await verifyAccessToken(accessToken))?.data
         isVerified ? router.push(redirectTo) : router.replace('/login')
     }
 

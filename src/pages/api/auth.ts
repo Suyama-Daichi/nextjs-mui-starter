@@ -1,10 +1,12 @@
+import { BACKEND_URL } from '@/constants'
 import { axiosClient } from '@/libs/axios'
 import { CodeDeliveryDetail } from '@/models/CodeDeliveryDetail'
 import { CognitoUserSession } from '@/models/CognitoUserSession'
 
 export const login = async (name: string, password: string) => {
+    console.log(BACKEND_URL)
     const result = await axiosClient.post<CognitoUserSession>(
-        'http://localhost:3001/auth/authenticate',
+        `${BACKEND_URL}/auth/authenticate`,
         {
             name,
             password,
@@ -15,7 +17,7 @@ export const login = async (name: string, password: string) => {
 
 export const forgotPassword = async (name: string) => {
     const result = await axiosClient.post<CodeDeliveryDetail>(
-        'http://localhost:3001/auth/forgot-password',
+        `${BACKEND_URL}/auth/forgot-password`,
         {
             name,
         }
@@ -29,7 +31,7 @@ export const resetPassword = async (
     code: number
 ) => {
     const result = await axiosClient.post<'SUCCESS'>(
-        'http://localhost:3001/auth/reset-password',
+        `${BACKEND_URL}/auth/reset-password`,
         {
             name,
             code,
@@ -41,8 +43,9 @@ export const resetPassword = async (
 }
 
 export const verifyAccessToken = async (accessToken?: string) => {
+    if (!accessToken) return
     const result = await axiosClient.post<string>(
-        'http://localhost:3001/auth/verify-access-token',
+        `${BACKEND_URL}/auth/verify-access-token`,
         {
             accessToken,
         }

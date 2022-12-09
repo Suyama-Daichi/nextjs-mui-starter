@@ -1,6 +1,5 @@
 /* eslint-disable */
 /** @type {import('next').NextConfig} */
-
 const { PHASE_DEVELOPMENT_SERVER } = require('next/constants')
 const { createSecureHeaders } = require('next-secure-headers')
 
@@ -40,7 +39,7 @@ module.exports = (phase) => {
                                 base: ["'self'"],
                                 formAction: ["'self'"],
                                 prefetchSrc: ["'self'"],
-                                connectSrc: ["'self' http://localhost:3001 'unsafe-eval'"],
+                                connectSrc: [`'self' ${process.env.NEXT_PUBLIC_BACKEND_URL} 'unsafe-eval'`],
                                 scriptSrc: addDevRule(["'self'"]),
                                 styleSrc: [
                                     "'self'",
