@@ -105,6 +105,9 @@ const ResetPassword = () => {
                             label="新しいパスワード"
                             register={{ ...register('password') }}
                         />
+                        <Typography fontSize={2} color={'error'}>
+                            {errors.password?.message}
+                        </Typography>
                     </Unstable_Grid2>
                     <Unstable_Grid2 xs={12} sm={8} smOffset={2} mb={2}>
                         <PasswordForm
