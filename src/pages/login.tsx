@@ -40,7 +40,9 @@ const Login = () => {
     }
 
     const onSubmit: SubmitHandler<LoginInput> = async (data) => {
-        const jwt = await loginHandler(data)
+        const jwt = await loginHandler(data).catch(() => {
+            alert('ログインに失敗しました')
+        })
         if (!jwt) return
         router.push('/dashboard')
     }
