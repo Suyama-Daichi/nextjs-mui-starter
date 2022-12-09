@@ -111,7 +111,7 @@ const Login = () => {
                             }}
                         />
                         <Typography fontSize={2} color={'error'}>
-                            {errors.email?.message}
+                            {errors.password?.message}
                         </Typography>
                     </Unstable_Grid2>
                     <Unstable_Grid2

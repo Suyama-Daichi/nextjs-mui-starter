@@ -4,7 +4,6 @@ import { CodeDeliveryDetail } from '@/models/CodeDeliveryDetail'
 import { CognitoUserSession } from '@/models/CognitoUserSession'
 
 export const login = async (name: string, password: string) => {
-    console.log(BACKEND_URL)
     const result = await axiosClient.post<CognitoUserSession>(
         `${BACKEND_URL}/auth/authenticate`,
         {
