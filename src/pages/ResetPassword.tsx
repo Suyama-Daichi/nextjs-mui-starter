@@ -24,10 +24,12 @@ const ResetPassword = () => {
     const [resendComplete, setResendComplete] = useState('')
 
     useEffect(() => {
-        if (router.query.email && typeof router.query.email === 'string') {
-            setEmail(router.query.email)
+        const { email } = router.query
+        if (!email) router.push('/ForgotPassword')
+        if (router.isReady && typeof email === 'string') {
+            setEmail(email)
         }
-    }, [router])
+    }, [router, router.isReady, router.query])
 
     const resendCode = async () => {
         const destination = await forgotPasswordHandler({ email })

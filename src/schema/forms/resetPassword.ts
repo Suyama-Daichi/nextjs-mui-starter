@@ -14,7 +14,7 @@ setLocale({
 
 // NOTE: 半角英数大文字小文字を含む8文字以上の正規表現
 const passwordPattern = new RegExp(
-    /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)[a-zA-Z\d]{8,}$/
+    /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d\W]{8,}$/
 )
 export interface ResetPasswordInput {
     password: string

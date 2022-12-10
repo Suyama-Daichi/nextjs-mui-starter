@@ -22,7 +22,13 @@ const ForgotPassword = () => {
     const onSubmit: SubmitHandler<ForgotPasswordEmail> = async (data) => {
         const destinationAddress = await forgotPasswordHandler(data)
         if (!destinationAddress) return
-        router.push('/ResetPassword', { query: { email: getValues('email') } })
+        router.push(
+            {
+                pathname: '/ResetPassword',
+                query: { email: getValues('email') },
+            },
+            'ResetPassword'
+        )
     }
 
     return (
