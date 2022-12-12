@@ -43,13 +43,13 @@ jobs:
               run: npm run build
 
             - name: Install pm2
-              run: npm install pm2
+              run: npm install pm2 --legacy-peer-deps
 
             - name: Install wait-on
-              run: npm install wait-on
+              run: npm install wait-on --legacy-peer-deps
 
             - name: Install mochawesome
-              run: npm install --verbose mocha mochawesome mochawesome-merge mochawesome-report-generator
+              run: npm install --verbose mocha mochawesome mochawesome-merge mochawesome-report-generator --legacy-peer-deps
 
             - name: Start async
               run: npx pm2 start npm -- start
