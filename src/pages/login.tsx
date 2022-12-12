@@ -134,7 +134,6 @@ const Login = () => {
                         <Button
                             size="large"
                             variant="contained"
-                            sx={{ borderRadius: '25px' }}
                             onClick={handleSubmit(onSubmit)}
                         >
                             {'ログイン'}

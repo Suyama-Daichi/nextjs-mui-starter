@@ -72,7 +72,6 @@ const ForgotPassword = () => {
                         <Button
                             size="large"
                             variant="contained"
-                            sx={{ borderRadius: '25px' }}
                             onClick={handleSubmit(onSubmit)}
                         >
                             {'送信'}

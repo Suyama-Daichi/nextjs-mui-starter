@@ -14,7 +14,7 @@ export const AuthCard = ({ children, title, ...rest }: Props & CardProps) => {
     return (
         <Unstable_Grid2 container>
             <Unstable_Grid2 xs={10} xsOffset={1} sm={8} smOffset={2}>
-                <Card {...rest} sx={{ borderRadius: '20px' }}>
+                <Card {...rest}>
                     <CardContent>
                         <Unstable_Grid2
                             mb={2}
