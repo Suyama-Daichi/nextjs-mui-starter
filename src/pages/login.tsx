@@ -122,7 +122,7 @@ const Login = () => {
                         display="flex"
                         justifyContent="center"
                     >
-                        <Link href="/ForgotPassword" underline="hover">
+                        <Link href="/forgot-password" underline="hover">
                             パスワードを忘れた場合
                         </Link>
                     </Unstable_Grid2>

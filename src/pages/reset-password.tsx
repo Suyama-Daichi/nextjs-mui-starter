@@ -25,7 +25,7 @@ const ResetPassword = () => {
 
     useEffect(() => {
         const { email } = router.query
-        if (!email) router.push('/ForgotPassword')
+        if (!email) router.push('/forgot-password')
         if (router.isReady && typeof email === 'string') {
             setEmail(email)
         }

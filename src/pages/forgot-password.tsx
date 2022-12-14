@@ -24,10 +24,10 @@ const ForgotPassword = () => {
         if (!destinationAddress) return
         router.push(
             {
-                pathname: '/ResetPassword',
+                pathname: '/reset-password',
                 query: { email: getValues('email') },
             },
-            'ResetPassword'
+            'reset-password'
         )
     }
 
