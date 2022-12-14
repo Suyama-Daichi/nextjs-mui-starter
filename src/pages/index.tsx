@@ -1,12 +1,12 @@
 import { Button } from '@mui/material'
 import type { NextPage } from 'next'
 
-import Page from '@components/Page'
 import { literals } from '@/ui/Literals'
+import LandingPage from '@/components/LandingPage'
 
 const Landing: NextPage = () => {
     return (
-        <Page
+        <LandingPage
             title={literals.brand}
             description={literals.defaultPageDescription}
         >
@@ -14,8 +14,7 @@ const Landing: NextPage = () => {
             <Button variant="contained" href={'/login'}>
                 ログイン
             </Button>
-            {/* TODO: ページ固有のコンポーネントはここから呼び出す */}
-        </Page>
+        </LandingPage>
     )
 }
 
