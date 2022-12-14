@@ -3,6 +3,7 @@ import Head from 'next/head'
 import ShortHeader from '@components/ShortHeader'
 import MiniSideNavBar from '@/components/MiniSideNavBar'
 import { Box } from '@mui/material'
+import { SWRConfig } from 'swr'
 
 interface Props {
     title: string
@@ -13,6 +14,9 @@ interface Props {
     header?: ReactNode
     children?: ReactNode
     slideNavbar?: boolean
+    fallback?: {
+        [key: string]: any
+    }
 }
 
 const defaultProps: Props = {
@@ -24,15 +28,17 @@ const defaultProps: Props = {
     slideNavbar: false,
 }
 
-const Page: FC<Props> = ({ title, description, children }) => {
+const Page: FC<Props> = ({ title, description, children, fallback }) => {
     return (
-        <Box width={'100vw'} height={'100vh'}>
-            <Head>
-                <title>{title}</title>
-                <meta name="description" content={description} />
-            </Head>
-            <MiniSideNavBar>{children}</MiniSideNavBar>
-        </Box>
+        <SWRConfig value={{ fallback }}>
+            <Box width={'100vw'} height={'100vh'}>
+                <Head>
+                    <title>{title}</title>
+                    <meta name="description" content={description} />
+                </Head>
+                <MiniSideNavBar>{children}</MiniSideNavBar>
+            </Box>
+        </SWRConfig>
     )
 }
 

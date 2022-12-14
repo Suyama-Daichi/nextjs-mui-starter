@@ -16,8 +16,10 @@ export const useAuth = () => {
         const { email: name, password } = loginInput
         const {
             accessToken: { jwtToken: accessJwt },
+            idToken: { jwtToken: idToken },
         } = (await login(name, password)).data
         Cookies.set('accessToken', accessJwt)
+        Cookies.set('idToken', idToken)
         return accessJwt
     }
 
