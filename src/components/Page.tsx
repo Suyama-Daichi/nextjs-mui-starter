@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react'
 import Head from 'next/head'
 import ShortHeader from '@components/ShortHeader'
-import MiniVariantDrawer from '@/components/MiniVariantDrawer'
+import MiniSideNavBar from '@/components/MiniSideNavBar'
 import { Box } from '@mui/material'
 
 interface Props {
@@ -31,7 +31,7 @@ const Page: FC<Props> = ({ title, description, children }) => {
                 <title>{title}</title>
                 <meta name="description" content={description} />
             </Head>
-            <MiniVariantDrawer>{children}</MiniVariantDrawer>
+            <MiniSideNavBar>{children}</MiniSideNavBar>
         </Box>
     )
 }

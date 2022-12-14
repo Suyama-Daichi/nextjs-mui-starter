@@ -25,9 +25,39 @@ import {
     Inbox as InboxIcon,
     Mail as MailIcon,
     Menu as MenuIcon,
+    Person as PersonIcon,
 } from '@mui/icons-material'
 import Logout from '@/components/Logout'
+import { useRouter } from 'next/router'
 const drawerWidth = 240
+
+const SideNavMenu = [
+    {
+        text: '自分の情報',
+        icon: <PersonIcon />,
+        page: '/my-profile',
+    },
+    {
+        text: 'レポート',
+        icon: <PersonIcon />,
+        page: undefined,
+    },
+    {
+        text: 'ランキング',
+        icon: <PersonIcon />,
+        page: undefined,
+    },
+    {
+        text: '準拠度チェッカー',
+        icon: <PersonIcon />,
+        page: undefined,
+    },
+    {
+        text: '認証取得',
+        icon: <PersonIcon />,
+        page: undefined,
+    },
+]
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: drawerWidth,
@@ -99,8 +129,9 @@ const Drawer = styled(MuiDrawer, {
     }),
 }))
 
-const MiniVariantDrawer = ({ children }: DrawerProps) => {
+const MiniSideNavBar = ({ children }: DrawerProps) => {
     const theme = useTheme()
+    const router = useRouter()
     const [open, setOpen] = React.useState(false)
 
     const handleDrawerOpen = () => {
@@ -150,18 +181,14 @@ const MiniVariantDrawer = ({ children }: DrawerProps) => {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {[
-                        'レポート',
-                        'ランキング',
-                        '準拠度チェッカー',
-                        '認証取得',
-                    ].map((text, index) => (
+                    {SideNavMenu.map(({ text, icon, page }) => (
                         <ListItem
                             key={text}
                             disablePadding
                             sx={{ display: 'block' }}
                         >
                             <ListItemButton
+                                onClick={() => router.push(page)}
                                 sx={{
                                     minHeight: 48,
                                     justifyContent: open ? 'initial' : 'center',
@@ -175,11 +202,7 @@ const MiniVariantDrawer = ({ children }: DrawerProps) => {
                                         justifyContent: 'center',
                                     }}
                                 >
-                                    {index % 2 === 0 ? (
-                                        <InboxIcon />
-                                    ) : (
-                                        <MailIcon />
-                                    )}
+                                    {icon}
                                 </ListItemIcon>
                                 <ListItemText
                                     primary={text}
@@ -231,4 +254,4 @@ const MiniVariantDrawer = ({ children }: DrawerProps) => {
     )
 }
 
-export default MiniVariantDrawer
+export default MiniSideNavBar
