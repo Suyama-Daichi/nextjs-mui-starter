@@ -1,16 +1,7 @@
-import { number, object, ref, SchemaOf, setLocale, string } from 'yup'
-// TODO: 各スキーマで共通化
-setLocale({
-    mixed: {
-        default: 'field_invalid',
-        required: '入力してください',
-        notType: '正しい形式で入力してください',
-    },
-    string: {
-        matches:
-            'パスワードは8文字以上でアルファベットの大文字、小文字と数字を含んでください',
-    },
-})
+import { number, object, ref, SchemaOf, string } from 'yup'
+import setLocale from '../../libs/yup'
+
+setLocale()
 
 // NOTE: 半角英数大文字小文字を含む8文字以上の正規表現
 const passwordPattern = new RegExp(

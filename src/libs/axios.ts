@@ -13,8 +13,6 @@ export const axiosClient = axios.create({
 })
 
 axiosClient.interceptors.request.use(async (config) => {
-    // TODO: recoilなどからjwtを取得する
-    // const token = await auth?.currentUser?.getIdToken()
     config.headers = {
         Authorization: Cookies.get('accessToken'),
         idToken: Cookies.get('idToken'),
