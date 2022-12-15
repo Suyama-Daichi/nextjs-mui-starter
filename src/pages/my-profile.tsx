@@ -4,6 +4,7 @@ import {
     Button,
     CircularProgress,
     TextField,
+    Typography,
     Unstable_Grid2,
 } from '@mui/material'
 import useUser from '@/hooks/useUser'
@@ -67,18 +68,26 @@ const ListUserDetailData = ({ data }: Props) => {
     return (
         <Unstable_Grid2 container direction="column" spacing={3}>
             <Unstable_Grid2 xs display="flex" justifyContent="center">
-                <TextField
-                    label="姓"
-                    {...register('last_name')}
-                    id={'last_name'}
-                    InputProps={{ readOnly: false }}
-                />
-                <TextField
-                    label="名"
-                    {...register('first_name')}
-                    id={'first_name'}
-                    InputProps={{ readOnly: false }}
-                />
+                <Unstable_Grid2>
+                    <TextField
+                        label="姓"
+                        {...register('last_name')}
+                        id={'last_name'}
+                    />
+                    <Typography fontSize={2} color={'error'}>
+                        {errors.last_name?.message}
+                    </Typography>
+                </Unstable_Grid2>
+                <Unstable_Grid2>
+                    <TextField
+                        label="名"
+                        {...register('first_name')}
+                        id={'first_name'}
+                    />
+                    <Typography fontSize={2} color={'error'}>
+                        {errors.first_name?.message}
+                    </Typography>
+                </Unstable_Grid2>
             </Unstable_Grid2>
             <Unstable_Grid2 xs display="flex" justifyContent="center">
                 <Button variant="contained" onClick={handleSubmit(onSubmit)}>
