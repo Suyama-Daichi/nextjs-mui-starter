@@ -3,6 +3,7 @@ import {
     verifyAccessToken,
     forgotPassword,
     resetPassword,
+    getNewToken,
 } from '@/pages/api/auth'
 import { LoginInput } from '@/schema/forms/login'
 import { useRouter } from 'next/router'
@@ -49,10 +50,19 @@ export const useAuth = () => {
         isVerified ? router.push(redirectTo) : router.replace('/login')
     }
 
+    const refreshToken = async () => {
+        const refreshToken = Cookies.get('refreshToken')
+        if (!refreshToken) return
+        const token = await getNewToken(refreshToken).then((res) => res.data)
+        Cookies.set('accessToken', token.AccessToken)
+        Cookies.set('idToken', token.IdToken)
+    }
+
     return {
         loginHandler,
         forgotPasswordHandler,
         restPasswordHandler,
         verifyToken,
+        refreshToken,
     }
 }

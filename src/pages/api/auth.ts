@@ -52,4 +52,9 @@ export const verifyAccessToken = async (accessToken?: string) => {
     return result
 }
 
-// TODO: トークンを更新
+export const getNewToken = async (refreshToken: string) => {
+    const result = await axiosClient.post(`${BACKEND_URL}/auth/token`, {
+        refreshToken,
+    })
+    return result
+}
