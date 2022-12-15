@@ -21,7 +21,8 @@ const MyProfile = () => {
     const { user, isLoading, isError } = useUser(id)
 
     // TODO: エラー画面を実装する
-    if (isLoading) return <CircularProgress />
+    // TODO: `!user`を消したい
+    if (isLoading || !user) return <CircularProgress />
     return (
         <Page title={`${literals.brand} - 自分の情報`} description="my profile">
             <AuthCard title="自分の情報">
