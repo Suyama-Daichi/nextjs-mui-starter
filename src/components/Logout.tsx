@@ -6,6 +6,8 @@ const Logout = ({ ...rest }: TypographyProps) => {
     const router = useRouter()
     const onClickLogout = () => {
         Cookies.remove('accessToken')
+        Cookies.remove('idToken')
+        Cookies.remove('refreshToken')
         router.replace('/login')
     }
     return (
