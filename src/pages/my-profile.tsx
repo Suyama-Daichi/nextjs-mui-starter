@@ -14,10 +14,11 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { schema } from '@/schema/forms/editUser'
 import { useEffect } from 'react'
 import { updateUser } from '@/pages/api/user.api'
+import { getIdFromIdToken } from '@/utils/jwtHelper'
 
 const MyProfile = () => {
-    // TODO: idTokenなどから動的に取得する
-    const { user, isLoading, isError } = useUser('symdit@gmail.com')
+    const id = getIdFromIdToken()
+    const { user, isLoading, isError } = useUser(id)
 
     // TODO: エラー画面を実装する
     if (isLoading) return <CircularProgress />
@@ -46,8 +47,12 @@ const ListUserDetailData = ({ data }: Props) => {
     })
 
     const onSubmit: SubmitHandler<User> = async (data) => {
-        // TODO: idTokenなどから動的に取得する
-        const result = await updateUser('symdit@gmail.com', data).catch((e) => {
+        const id = getIdFromIdToken()
+        if (!id) {
+            alert('更新に失敗しました')
+            return
+        }
+        const result = await updateUser(id, data).catch((e) => {
             console.error(e)
             alert('更新に失敗しました')
         })
