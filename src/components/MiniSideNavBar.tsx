@@ -188,7 +188,10 @@ const MiniSideNavBar = ({ children }: DrawerProps) => {
                             sx={{ display: 'block' }}
                         >
                             <ListItemButton
-                                onClick={() => router.push(page)}
+                                onClick={() =>
+                                    typeof page === 'string' &&
+                                    router.push(page)
+                                }
                                 sx={{
                                     minHeight: 48,
                                     justifyContent: open ? 'initial' : 'center',
