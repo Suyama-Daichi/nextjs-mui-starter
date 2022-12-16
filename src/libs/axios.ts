@@ -1,5 +1,6 @@
 import axios, { AxiosError } from 'axios'
 import { APIErrorHandler } from '@/utils/APIErrorHandler'
+import Cookies from 'js-cookie'
 
 export class ApiError extends Error {
     status?: string
@@ -12,11 +13,10 @@ export const axiosClient = axios.create({
 })
 
 axiosClient.interceptors.request.use(async (config) => {
-    // TODO: recoilなどからjwtを取得する
-    // const token = await auth?.currentUser?.getIdToken()
-    // config.headers = {
-    //     Authorization: token || '',
-    // }
+    config.headers = {
+        Authorization: Cookies.get('accessToken'),
+        idToken: Cookies.get('idToken'),
+    }
     return config
 })
 

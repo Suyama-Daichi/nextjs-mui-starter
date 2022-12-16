@@ -1,0 +1,20 @@
+import { getUser } from '@/pages/api/user.api'
+import useSWR from 'swr'
+import { useAuth } from '@/hooks/useAuth'
+
+const useUser = (id?: string) => {
+    const { refreshToken } = useAuth()
+    const { data, error, isLoading } = useSWR(id, getUser, {
+        onErrorRetry: (error, key, config, revalidate, { retryCount }) => {
+            if (error.response.status) refreshToken()
+        },
+    })
+
+    return {
+        user: data,
+        isLoading,
+        isError: error,
+    }
+}
+
+export default useUser

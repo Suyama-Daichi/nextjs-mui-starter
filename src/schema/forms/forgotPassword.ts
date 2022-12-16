@@ -1,14 +1,7 @@
-import { object, SchemaOf, setLocale, string } from 'yup'
+import { object, SchemaOf, string } from 'yup'
+import setLocale from '../../libs/yup'
 
-setLocale({
-    mixed: {
-        default: 'field_invalid',
-        required: '入力してください',
-    },
-    string: {
-        email: 'メールアドレスの形式で入力してください',
-    },
-})
+setLocale()
 
 export interface ForgotPasswordEmail {
     email: string

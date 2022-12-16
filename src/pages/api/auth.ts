@@ -2,6 +2,7 @@ import { BACKEND_URL } from '@/constants'
 import { axiosClient } from '@/libs/axios'
 import { CodeDeliveryDetail } from '@/models/CodeDeliveryDetail'
 import { CognitoUserSession } from '@/models/CognitoUserSession'
+import Cookies from 'js-cookie'
 
 export const login = async (name: string, password: string) => {
     const result = await axiosClient.post<CognitoUserSession>(
@@ -41,6 +42,13 @@ export const resetPassword = async (
     return result
 }
 
+export const getLocalTokens = () => {
+    const accessToken = Cookies.get('accessToken')
+    const idToken = Cookies.get('idToken')
+    const refreshToken = Cookies.get('refreshToken')
+    return { accessToken, idToken, refreshToken }
+}
+
 export const verifyAccessToken = async (accessToken?: string) => {
     if (!accessToken) return
     const result = await axiosClient.post<string>(
@@ -49,5 +57,12 @@ export const verifyAccessToken = async (accessToken?: string) => {
             accessToken,
         }
     )
+    return result
+}
+
+export const getNewToken = async (refreshToken: string) => {
+    const result = await axiosClient.post(`${BACKEND_URL}/auth/token`, {
+        refreshToken,
+    })
     return result
 }

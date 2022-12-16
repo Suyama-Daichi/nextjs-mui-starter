@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { VisibilityOff, Visibility } from '@mui/icons-material'
 import {
     Button,
@@ -16,12 +16,11 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { LoginInput, schema } from '@/schema/forms/login'
 import { useRouter } from 'next/router'
-import Cookies from 'js-cookie'
 import { AuthCard } from '@/components/Auth.Card'
 
 const Login = () => {
     const [visiblePassword, setVisiblePassword] = useState(false)
-    const { loginHandler, verifyToken } = useAuth()
+    const { loginHandler } = useAuth()
     const {
         register,
         handleSubmit,
@@ -30,10 +29,6 @@ const Login = () => {
         resolver: yupResolver(schema),
     })
     const router = useRouter()
-
-    useEffect(() => {
-        verifyToken(Cookies.get('accessToken'))
-    }, [])
 
     const handleClickShowPassword = () => {
         setVisiblePassword(!visiblePassword)
@@ -122,7 +117,7 @@ const Login = () => {
                         display="flex"
                         justifyContent="center"
                     >
-                        <Link href="/ForgotPassword" underline="hover">
+                        <Link href="/forgot-password" underline="hover">
                             パスワードを忘れた場合
                         </Link>
                     </Unstable_Grid2>

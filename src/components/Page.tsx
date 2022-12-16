@@ -1,11 +1,9 @@
 import React, { FC, ReactNode } from 'react'
-import styles from '@/styles/Page.module.scss'
 import Head from 'next/head'
 import ShortHeader from '@components/ShortHeader'
-import DefaultNavbarLinks from '@components/DefaultNavbarLinks'
-import { Card } from '@mui/material'
-import Navbar from '@components/Navbar'
-import { useRouter } from 'next/router'
+import MiniSideNavBar from '@/components/MiniSideNavBar'
+import { Box } from '@mui/material'
+import { SWRConfig } from 'swr'
 
 interface Props {
     title: string
@@ -16,49 +14,31 @@ interface Props {
     header?: ReactNode
     children?: ReactNode
     slideNavbar?: boolean
+    fallback?: {
+        [key: string]: any
+    }
 }
 
 const defaultProps: Props = {
     title: '',
     description: '',
     header: <ShortHeader />,
-    navbarLinks: <DefaultNavbarLinks />,
+    navbarLinks: undefined,
     navbarMenu: false,
     slideNavbar: false,
 }
 
-// TODO: ヘッダー、サイドバーコンポーネント(ログイン時のみ)などはここから呼び出す
-const Page: FC<Props> = ({
-    title,
-    description,
-    className,
-    children,
-    navbarLinks,
-    navbarMenu,
-    slideNavbar,
-}) => {
-    const router = useRouter()
-
+const Page: FC<Props> = ({ title, description, children, fallback }) => {
     return (
-        <div className={styles.container}>
-            <Head>
-                <title>{title}</title>
-                <meta name="description" content={description} />
-            </Head>
-            {/* TODO: 複数あるときは配列に切り出してincludeで評価する */}
-            {router.pathname !== '/login' && (
-                <Navbar
-                    navbarLinks={navbarLinks}
-                    navbarMenu={navbarMenu}
-                    slideNavbar={slideNavbar}
-                />
-            )}
-            <Card className={styles.main}>
-                <div className={className ? className : styles.mainContent}>
-                    {children}
-                </div>
-            </Card>
-        </div>
+        <SWRConfig value={{ fallback }}>
+            <Box width={'100vw'} height={'100vh'}>
+                <Head>
+                    <title>{title}</title>
+                    <meta name="description" content={description} />
+                </Head>
+                <MiniSideNavBar>{children}</MiniSideNavBar>
+            </Box>
+        </SWRConfig>
     )
 }
 
