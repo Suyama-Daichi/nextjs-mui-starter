@@ -4,12 +4,14 @@ import {
     forgotPassword,
     resetPassword,
     getNewToken,
+    getLocalTokens,
 } from '@/pages/api/auth'
 import { LoginInput } from '@/schema/forms/login'
 import { useRouter } from 'next/router'
 import Cookies from 'js-cookie'
 import { ForgotPasswordEmail } from '@/schema/forms/forgotPassword'
 import { ResetPasswordInput } from '@/schema/forms/resetPassword'
+import { useCallback } from 'react'
 
 export const useAuth = () => {
     const router = useRouter()
@@ -42,13 +44,13 @@ export const useAuth = () => {
         return response
     }
 
-    const verifyToken = async (
-        accessToken?: string,
-        redirectTo = '/dashboard'
-    ) => {
-        const isVerified = (await verifyAccessToken(accessToken))?.data
+    const redirectHandler = useCallback(async (redirectTo = '/dashboard') => {
+        const { accessToken } = getLocalTokens()
+        const isVerified = await verifyAccessToken(accessToken).then(
+            (res) => res?.data
+        )
         isVerified ? router.push(redirectTo) : router.replace('/login')
-    }
+    }, [])
 
     const refreshToken = async () => {
         const refreshToken = Cookies.get('refreshToken')
@@ -62,7 +64,7 @@ export const useAuth = () => {
         loginHandler,
         forgotPasswordHandler,
         restPasswordHandler,
-        verifyToken,
+        redirectHandler,
         refreshToken,
     }
 }
