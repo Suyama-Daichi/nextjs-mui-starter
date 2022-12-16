@@ -7,5 +7,5 @@ export const getIdFromIdToken = () => {
     const idToken = Cookies.get('idToken')
     if (!idToken) return
     const decodedIdToken = jwt_decode<CognitoIdToken>(idToken)
-    return decodedIdToken.email
+    return decodedIdToken['cognito:username']
 }
