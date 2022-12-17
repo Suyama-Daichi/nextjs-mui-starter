@@ -53,7 +53,7 @@ export const useAuth = () => {
     }, [])
 
     const refreshToken = async () => {
-        const refreshToken = Cookies.get('refreshToken')
+        const { refreshToken } = getLocalTokens()
         if (!refreshToken) return
         const token = await getNewToken(refreshToken).then((res) => res.data)
         Cookies.set('accessToken', token.AccessToken)
