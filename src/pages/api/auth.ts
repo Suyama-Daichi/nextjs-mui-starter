@@ -2,6 +2,7 @@ import { BACKEND_URL } from '@/constants'
 import { axiosClient } from '@/libs/axios'
 import { CodeDeliveryDetail } from '@/models/CodeDeliveryDetail'
 import { CognitoUserSession } from '@/models/CognitoUserSession'
+import { Token } from '@/models/Tokens'
 import { UserAttribute } from '@/models/UserAttribute.request'
 import Cookies from 'js-cookie'
 
@@ -66,14 +67,15 @@ export const getLocalTokens = () => {
     return { accessToken, idToken, refreshToken }
 }
 
-export const verifyAccessToken = async (accessToken?: string) => {
-    if (!accessToken) return
-    const result = await axiosClient.post<string>(
-        `${BACKEND_URL}/auth/verify-access-token`,
-        {
+export const verifyAccessToken = async ([key, accessToken]: [
+    string,
+    string
+]) => {
+    const result = await axiosClient
+        .post<boolean>(`${BACKEND_URL}/auth/verify-access-token`, {
             accessToken,
-        }
-    )
+        })
+        .then((res) => res.data)
     return result
 }
 
@@ -82,4 +84,13 @@ export const getNewToken = async (refreshToken: string) => {
         refreshToken,
     })
     return result
+}
+
+export const setNewToken = (token: Token) => {
+    token.AccessToken
+        ? Cookies.set('accessToken', token.AccessToken)
+        : Cookies.remove('accessToken')
+    token.IdToken
+        ? Cookies.set('idToken', token.IdToken)
+        : Cookies.remove('idToken')
 }
