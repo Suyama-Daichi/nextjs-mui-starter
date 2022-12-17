@@ -26,9 +26,12 @@ import {
     Mail as MailIcon,
     Menu as MenuIcon,
     Person as PersonIcon,
+    AddBox,
 } from '@mui/icons-material'
 import Logout from '@/components/Logout'
 import { useRouter } from 'next/router'
+import { literals } from '@/ui/Literals'
+import { Role } from '@/models/Role.enum'
 const drawerWidth = 240
 
 const SideNavMenu = [
@@ -56,6 +59,12 @@ const SideNavMenu = [
         text: '認証取得',
         icon: <PersonIcon />,
         page: undefined,
+    },
+    {
+        text: 'ユーザーの追加',
+        icon: <AddBox />,
+        page: '/add-user',
+        role: [Role.SYSTEM_ADMIN],
     },
 ]
 
@@ -165,7 +174,7 @@ const MiniSideNavBar = ({ children }: DrawerProps) => {
                         component="div"
                         color={'black'}
                     >
-                        ナビゲーションバー
+                        {literals.brand}
                     </Typography>
                 </Toolbar>
             </AppBar>

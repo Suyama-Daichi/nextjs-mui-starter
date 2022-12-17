@@ -5,6 +5,7 @@ import {
     resetPassword,
     getNewToken,
     getLocalTokens,
+    createUser,
 } from '@/pages/api/auth'
 import { LoginInput } from '@/schema/forms/login'
 import { useRouter } from 'next/router'
@@ -12,6 +13,7 @@ import Cookies from 'js-cookie'
 import { ForgotPasswordEmail } from '@/schema/forms/forgotPassword'
 import { ResetPasswordInput } from '@/schema/forms/resetPassword'
 import { useCallback } from 'react'
+import { AddUserInput } from '@/schema/forms/addUser'
 
 export const useAuth = () => {
     const router = useRouter()
@@ -26,6 +28,14 @@ export const useAuth = () => {
         Cookies.set('idToken', idToken)
         Cookies.set('refreshToken', refreshToken)
         return accessJwt
+    }
+
+    const addUserHandler = async (loginInput: AddUserInput) => {
+        const { email, password, last_name, first_name } = loginInput
+        return await createUser(email, password, {
+            last_name,
+            first_name,
+        }).then((res) => res.data)
     }
 
     const forgotPasswordHandler = async (input: ForgotPasswordEmail) => {
@@ -62,6 +72,7 @@ export const useAuth = () => {
 
     return {
         loginHandler,
+        addUserHandler,
         forgotPasswordHandler,
         restPasswordHandler,
         redirectHandler,

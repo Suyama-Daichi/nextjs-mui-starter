@@ -2,6 +2,7 @@ import { BACKEND_URL } from '@/constants'
 import { axiosClient } from '@/libs/axios'
 import { CodeDeliveryDetail } from '@/models/CodeDeliveryDetail'
 import { CognitoUserSession } from '@/models/CognitoUserSession'
+import { UserAttribute } from '@/models/UserAttribute.request'
 import Cookies from 'js-cookie'
 
 export const login = async (name: string, password: string) => {
@@ -10,6 +11,22 @@ export const login = async (name: string, password: string) => {
         {
             name,
             password,
+        }
+    )
+    return result
+}
+
+export const createUser = async (
+    email: string,
+    password: string,
+    attribute: UserAttribute
+) => {
+    const result = await axiosClient.post<CognitoUserSession>(
+        `${BACKEND_URL}/auth/register`,
+        {
+            email,
+            password,
+            ...attribute,
         }
     )
     return result
