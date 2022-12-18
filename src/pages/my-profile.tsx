@@ -1,6 +1,12 @@
 import Page from '@/components/Page'
 import { literals } from '@/ui/Literals'
-import { Button, TextField, Typography, Unstable_Grid2 } from '@mui/material'
+import {
+    Button,
+    Divider,
+    TextField,
+    Typography,
+    Unstable_Grid2,
+} from '@mui/material'
 import useUser from '@/hooks/useUser'
 import { AuthCard } from '@/components/Auth.Card'
 import { User } from '@/models/User.response'
@@ -12,17 +18,19 @@ import { updateUser } from '@/pages/api/user.api'
 import { getIdFromIdToken } from '@/utils/jwtHelper'
 import { useRequireLogin } from '@/hooks/useRequireLogin'
 import { Spinner } from '@/components/Spinner'
+import { ErrorAlert } from '@/components/ErrorAlert'
 
 const MyProfile = () => {
     useRequireLogin()
     const id = getIdFromIdToken()
     const { user, isLoading, isError } = useUser(id)
 
-    // TODO: エラー画面を実装する
     // TODO: `!user`を消したい
     if (isLoading || !user) return <Spinner />
     return (
         <Page title={`${literals.brand} - 自分の情報`} description="my profile">
+            {isError && <ErrorAlert>エラーが発生しました</ErrorAlert>}
+            <Divider sx={{ marginY: 2 }} />
             <AuthCard title="自分の情報">
                 <ListUserDetailData data={user} />
             </AuthCard>
