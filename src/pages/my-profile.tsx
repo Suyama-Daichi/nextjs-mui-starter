@@ -1,12 +1,6 @@
 import Page from '@/components/Page'
 import { literals } from '@/ui/Literals'
-import {
-    Button,
-    CircularProgress,
-    TextField,
-    Typography,
-    Unstable_Grid2,
-} from '@mui/material'
+import { Button, TextField, Typography, Unstable_Grid2 } from '@mui/material'
 import useUser from '@/hooks/useUser'
 import { AuthCard } from '@/components/Auth.Card'
 import { User } from '@/models/User.response'
@@ -17,6 +11,7 @@ import { useEffect } from 'react'
 import { updateUser } from '@/pages/api/user.api'
 import { getIdFromIdToken } from '@/utils/jwtHelper'
 import { useRequireLogin } from '@/hooks/useRequireLogin'
+import { Spinner } from '@/components/Spinner'
 
 const MyProfile = () => {
     useRequireLogin()
@@ -25,7 +20,7 @@ const MyProfile = () => {
 
     // TODO: エラー画面を実装する
     // TODO: `!user`を消したい
-    if (isLoading || !user) return <CircularProgress />
+    if (isLoading || !user) return <Spinner />
     return (
         <Page title={`${literals.brand} - 自分の情報`} description="my profile">
             <AuthCard title="自分の情報">
