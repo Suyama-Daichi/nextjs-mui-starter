@@ -13,12 +13,14 @@ export const useRequireLogin = () => {
     const { data } = useSWR(['', accessToken], verifyAccessToken, {
         onErrorRetry: (error, key, config, revalidate, { retryCount }) => {
             if (error.response.status === 403) alert('権限がありません')
-            if (error.response.status === 401) refreshToken()
+            if (error.response.status === 401)
+                refreshToken().catch(() => {
+                    // NOTE: リフレッシュトークンの期限切れ時は再ログインさせる
+                    router.replace('/login')
+                })
         },
     })
     useEffect(() => {
-        // TODO: リフレッシュトークンの期限切れを検証（デフォルト30日）
-        if (!Cookies.get('refreshToken')) router.replace('/login')
         if (typeof data === 'boolean' && !data) router.replace('/login')
     }, [data])
 }

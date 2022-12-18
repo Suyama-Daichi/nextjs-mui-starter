@@ -16,8 +16,10 @@ import { schema } from '@/schema/forms/editUser'
 import { useEffect } from 'react'
 import { updateUser } from '@/pages/api/user.api'
 import { getIdFromIdToken } from '@/utils/jwtHelper'
+import { useRequireLogin } from '@/hooks/useRequireLogin'
 
 const MyProfile = () => {
+    useRequireLogin()
     const id = getIdFromIdToken()
     const { user, isLoading, isError } = useUser(id)
 
