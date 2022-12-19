@@ -28,7 +28,6 @@ This project is licensed under `Apache-2.0`. It would be nice if you would link 
 
 Cheat sheet on how to start things:
 
--   Build the blog: `npm run build:content`, do this first after checking out the repo as dev builds won't work otherwise
 -   Dev: `npm run dev`
 -   Prod: `npm run prod`
 -   Unit Tests: `npm test` or `npm run test:watch`
@@ -38,12 +37,11 @@ Cheat sheet on how to start things:
 
 ## Getting Started
 
-Clone this repository: `git clone https://github.com/liebharc/nextjs-mui-starter`
+Clone this repository: `git clone https://github.com/Suyama-Daichi/nextjs-mui-starter`
 
 ### Customization
 
--   Edit `/src/ui/Literals.ts` and enter your brand, description and contact details
--   Start your own blog post by edit `/content/post/yourfirstpost.md`
+-   Edit `/src/constants.ts` and enter your brand, description and contact details
 -   Add your own content to the pages at `/pages` or create new ones
 -   Enable github workflows based on `/.github/workflows`
 -   Edit your names and roles to `/public/humans.txt` and consider to generate a security.txt at https://securitytxt.org/ and place it next to the humans.txt
