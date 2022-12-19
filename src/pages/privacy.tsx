@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import React from 'react'
 
 import { Page } from '@/components/Layout'
-import { literals } from '@/ui/Literals'
+import { literals } from '@/constants'
 
 const Privacy: NextPage = () => {
     return (

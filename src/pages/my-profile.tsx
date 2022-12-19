@@ -1,5 +1,5 @@
 import { Page } from '@/components/Layout'
-import { literals } from '@/ui/Literals'
+import { literals } from '@/constants'
 import { TextField, Typography, Unstable_Grid2 } from '@mui/material'
 import useUser from '@/hooks/useUser'
 import { AuthCard } from '@/components/Card'

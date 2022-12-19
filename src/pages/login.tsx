@@ -9,7 +9,7 @@ import {
     Unstable_Grid2,
 } from '@mui/material'
 import Head from 'next/head'
-import { literals } from '@/ui/Literals'
+import { literals } from '@/constants'
 import { useAuth } from '@hooks/useAuth'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'

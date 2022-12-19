@@ -30,7 +30,7 @@ import {
 } from '@mui/icons-material'
 import { Logout } from '@/components/Button'
 import { useRouter } from 'next/router'
-import { literals } from '@/ui/Literals'
+import { literals } from '@/constants'
 import { Role } from '@/models/Role.enum'
 const drawerWidth = 240
 

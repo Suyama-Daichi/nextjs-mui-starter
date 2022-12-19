@@ -1,7 +1,7 @@
 import { Button } from '@mui/material'
 import type { NextPage } from 'next'
 
-import { literals } from '@/ui/Literals'
+import { literals } from '@/constants'
 import Head from 'next/head'
 
 const Landing: NextPage = () => {
