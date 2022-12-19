@@ -13,7 +13,6 @@ import { getIdFromIdToken } from '@/utils/jwtHelper'
 import { useRequireLogin } from '@/hooks/useRequireLogin'
 import { Spinner } from '@/components/Spinner'
 import Button from '@/components/Button'
-import SnackBar from '@/components/SnackBar'
 import { useSnack } from '@/hooks/useSnack'
 
 const MyProfile = () => {

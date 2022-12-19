@@ -11,6 +11,7 @@ import { CssBaseline } from '@mui/material'
 import Background from '@components/Background'
 import { RecoilRoot } from 'recoil'
 import SnackBar from '@/components/SnackBar'
+import SWRConfig from '@/components/SWRConfig'
 
 const cache = createCache({
     key: 'css',
@@ -26,8 +27,10 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }): ReactElement => {
                     <ReduxProvider store={store}>
                         <Background>
                             <RecoilRoot>
-                                <Component {...pageProps} />
-                                <SnackBar />
+                                <SWRConfig>
+                                    <Component {...pageProps} />
+                                    <SnackBar />
+                                </SWRConfig>
                             </RecoilRoot>
                         </Background>
                     </ReduxProvider>
