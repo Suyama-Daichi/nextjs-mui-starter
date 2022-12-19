@@ -21,9 +21,6 @@ jobs:
             - name: Install
               run: npm install --legacy-peer-deps
 
-            - name: Build blog content
-              run: npm run build:content
-
             - name: Lint
               run: npm run lint
 
