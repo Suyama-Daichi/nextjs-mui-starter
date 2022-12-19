@@ -12,19 +12,24 @@ import { updateUser } from '@/pages/api/user.api'
 import { getIdFromIdToken } from '@/utils/jwtHelper'
 import { useRequireLogin } from '@/hooks/useRequireLogin'
 import { Spinner } from '@/components/Spinner'
-import { ErrorAlert } from '@/components/ErrorAlert'
 import Button from '@/components/Button'
+import SnackBar from '@/components/SnackBar'
+import { useSnack } from '@/hooks/useSnack'
 
 const MyProfile = () => {
     useRequireLogin()
     const id = getIdFromIdToken()
     const { user, isLoading, isError } = useUser(id)
+    const { openErrorSnackHandler } = useSnack()
+
+    useEffect(() => {
+        if (isError) openErrorSnackHandler('エラーが発生しました')
+    }, [isError, openErrorSnackHandler])
 
     // TODO: `!user`を消したい
     if (isLoading || !user) return <Spinner />
     return (
         <Page title={`${literals.brand} - 自分の情報`} description="my profile">
-            {isError && <ErrorAlert>エラーが発生しました</ErrorAlert>}
             <Divider sx={{ marginY: 2 }} />
             <AuthCard title="自分の情報">
                 <ListUserDetailData data={user} />
@@ -47,23 +52,22 @@ const ListUserDetailData = ({ data }: Props) => {
     } = useForm<User>({
         resolver: yupResolver(schema),
     })
-
     const [loading, setLoading] = useState(false)
+    const { openSuccessSnackHandler, openErrorSnackHandler } = useSnack()
 
     const onSubmit: SubmitHandler<User> = async (data) => {
         setLoading(true)
         const id = getIdFromIdToken()
         if (!id) {
-            alert('更新に失敗しました')
             setLoading(false)
             return
         }
         const result = await updateUser(id, data).catch((e) => {
             console.error(e)
             setLoading(false)
-            alert('更新に失敗しました')
+            openErrorSnackHandler('更新に失敗しました')
         })
-        if (result) alert('更新しました')
+        if (result) openSuccessSnackHandler('更新しました')
         setLoading(false)
     }
     useEffect(() => {

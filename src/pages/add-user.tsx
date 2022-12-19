@@ -14,10 +14,12 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { AuthCard } from '@/components/Auth.Card'
 import { AddUserInput, schema } from '@/schema/forms/addUser'
+import { useSnack } from '@/hooks/useSnack'
 
 const AddUser = () => {
     const [visiblePassword, setVisiblePassword] = useState(false)
     const { addUserHandler } = useAuth()
+    const { openSuccessSnackHandler, openErrorSnackHandler } = useSnack()
     const {
         register,
         handleSubmit,
@@ -32,10 +34,10 @@ const AddUser = () => {
 
     const onSubmit: SubmitHandler<AddUserInput> = async (data) => {
         const result = await addUserHandler(data).catch(() => {
-            alert('ユーザーの追加に失敗しました')
+            openErrorSnackHandler('ユーザーの追加に失敗しました')
         })
         if (!result) return
-        alert(`${data.email}にログイン情報を送信しました`)
+        openSuccessSnackHandler(`${data.email}にログイン情報を送信しました`)
     }
 
     return (

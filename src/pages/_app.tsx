@@ -10,6 +10,7 @@ import ChangeTheme from '@components/ChangeTheme'
 import { CssBaseline } from '@mui/material'
 import Background from '@components/Background'
 import { RecoilRoot } from 'recoil'
+import SnackBar from '@/components/SnackBar'
 
 const cache = createCache({
     key: 'css',
@@ -26,6 +27,7 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }): ReactElement => {
                         <Background>
                             <RecoilRoot>
                                 <Component {...pageProps} />
+                                <SnackBar />
                             </RecoilRoot>
                         </Background>
                     </ReduxProvider>

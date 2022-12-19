@@ -17,6 +17,7 @@ import { LoginInput, schema } from '@/schema/forms/login'
 import { useRouter } from 'next/router'
 import { AuthCard } from '@/components/Auth.Card'
 import Button from '@/components/Button'
+import { useSnack } from '@/hooks/useSnack'
 
 const Login = () => {
     const [visiblePassword, setVisiblePassword] = useState(false)
@@ -30,6 +31,7 @@ const Login = () => {
         resolver: yupResolver(schema),
     })
     const router = useRouter()
+    const { openErrorSnackHandler } = useSnack()
 
     const handleClickShowPassword = () => {
         setVisiblePassword(!visiblePassword)
@@ -38,7 +40,7 @@ const Login = () => {
     const onSubmit: SubmitHandler<LoginInput> = async (data) => {
         setLoading(true)
         const jwt = await loginHandler(data).catch(() => {
-            alert('ログインに失敗しました')
+            openErrorSnackHandler('ログインに失敗しました')
             setLoading(false)
         })
         if (!jwt) return
