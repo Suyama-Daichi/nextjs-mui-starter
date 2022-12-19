@@ -6,12 +6,11 @@ import { Provider as ReduxProvider } from 'react-redux'
 import { store } from '@/ui/redux/store'
 import { CacheProvider } from '@emotion/react'
 import createCache from '@emotion/cache'
-import ChangeTheme from '@components/ChangeTheme'
+import { ChangeTheme, SWRConfig } from '@/components/Config'
 import { CssBaseline } from '@mui/material'
-import Background from '@components/Background'
+import { Background } from '@/components/Layout'
 import { RecoilRoot } from 'recoil'
-import SnackBar from '@/components/SnackBar'
-import SWRConfig from '@/components/SWRConfig'
+import { SnackBar } from '@/components/Feedback'
 
 const cache = createCache({
     key: 'css',

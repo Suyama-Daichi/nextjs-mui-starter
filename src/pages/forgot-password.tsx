@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { useAuth } from '@hooks/useAuth'
 import { ForgotPasswordEmail, schema } from '@/schema/forms/forgotPassword'
 import { useRouter } from 'next/router'
-import { AuthCard } from '@components/Auth.Card'
+import { AuthCard } from '@/components/Card'
 
 const ForgotPassword = () => {
     const { forgotPasswordHandler } = useAuth()

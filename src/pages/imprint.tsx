@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import React from 'react'
 
-import Page from '@components/Page'
+import { Page } from '@/components/Layout'
 import { literals } from '@/ui/Literals'
 
 const Imprint: NextPage = () => {

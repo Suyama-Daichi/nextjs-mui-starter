@@ -12,7 +12,7 @@ import Head from 'next/head'
 import { useAuth } from '@hooks/useAuth'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { AuthCard } from '@/components/Auth.Card'
+import { AuthCard } from '@/components/Card'
 import { AddUserInput, schema } from '@/schema/forms/addUser'
 import { useSnack } from '@/hooks/useSnack'
 

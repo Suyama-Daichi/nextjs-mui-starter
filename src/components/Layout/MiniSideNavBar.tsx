@@ -28,7 +28,7 @@ import {
     Person as PersonIcon,
     AddBox,
 } from '@mui/icons-material'
-import Logout from '@/components/Logout'
+import { Logout } from '@/components/Button'
 import { useRouter } from 'next/router'
 import { literals } from '@/ui/Literals'
 import { Role } from '@/models/Role.enum'
@@ -138,7 +138,7 @@ const Drawer = styled(MuiDrawer, {
     }),
 }))
 
-const MiniSideNavBar = ({ children }: DrawerProps) => {
+export const MiniSideNavBar = ({ children }: DrawerProps) => {
     const theme = useTheme()
     const router = useRouter()
     const [open, setOpen] = React.useState(false)
@@ -265,5 +265,3 @@ const MiniSideNavBar = ({ children }: DrawerProps) => {
         </Box>
     )
 }
-
-export default MiniSideNavBar

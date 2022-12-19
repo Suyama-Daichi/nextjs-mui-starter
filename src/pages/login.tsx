@@ -15,8 +15,8 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { LoginInput, schema } from '@/schema/forms/login'
 import { useRouter } from 'next/router'
-import { AuthCard } from '@/components/Auth.Card'
-import Button from '@/components/Button'
+import { AuthCard } from '@/components/Card'
+import { Button } from '@/components/Button'
 import { useSnack } from '@/hooks/useSnack'
 
 const Login = () => {

@@ -1,7 +1,7 @@
 type Props = {
     children: React.ReactNode
 }
-const Background = ({ children }: Props) => {
+export const Background = ({ children }: Props) => {
     return (
         <div
             style={{
@@ -18,5 +18,3 @@ const Background = ({ children }: Props) => {
         </div>
     )
 }
-
-export default Background

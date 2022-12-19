@@ -2,7 +2,7 @@ import { Typography, TypographyProps } from '@mui/material'
 import Cookies from 'js-cookie'
 import { useRouter } from 'next/router'
 
-const Logout = ({ ...rest }: TypographyProps) => {
+export const Logout = ({ ...rest }: TypographyProps) => {
     const router = useRouter()
     const onClickLogout = () => {
         Cookies.remove('accessToken')
@@ -16,5 +16,3 @@ const Logout = ({ ...rest }: TypographyProps) => {
         </Typography>
     )
 }
-
-export default Logout

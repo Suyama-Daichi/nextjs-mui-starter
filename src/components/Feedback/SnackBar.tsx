@@ -1,7 +1,7 @@
 import { useSnack } from '@/hooks/useSnack'
 import { Alert, Snackbar, SnackbarProps } from '@mui/material'
 
-const SnackBar = ({ ...rest }: SnackbarProps) => {
+export const SnackBar = ({ ...rest }: SnackbarProps) => {
     const { openSnack, closeSnackHandler } = useSnack()
 
     return (
@@ -22,5 +22,3 @@ const SnackBar = ({ ...rest }: SnackbarProps) => {
         </Snackbar>
     )
 }
-
-export default SnackBar

@@ -1,8 +1,8 @@
-import Page from '@/components/Page'
+import { Page } from '@/components/Layout'
 import { literals } from '@/ui/Literals'
 import { Divider, TextField, Typography, Unstable_Grid2 } from '@mui/material'
 import useUser from '@/hooks/useUser'
-import { AuthCard } from '@/components/Auth.Card'
+import { AuthCard } from '@/components/Card'
 import { User } from '@/models/User.response'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -11,9 +11,9 @@ import { useEffect, useState } from 'react'
 import { updateUser } from '@/pages/api/user.api'
 import { getIdFromIdToken } from '@/utils/jwtHelper'
 import { useRequireLogin } from '@/hooks/useRequireLogin'
-import { Spinner } from '@/components/Spinner'
-import Button from '@/components/Button'
+import { Spinner } from '@/components/Feedback'
 import { useSnack } from '@/hooks/useSnack'
+import { Button } from '@/components/Button'
 
 const MyProfile = () => {
     useRequireLogin()
