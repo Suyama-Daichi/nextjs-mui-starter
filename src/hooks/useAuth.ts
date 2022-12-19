@@ -54,7 +54,7 @@ export const useAuth = () => {
 
     const refreshToken = async () => {
         const { refreshToken } = getLocalTokens()
-        if (!refreshToken) return
+        if (!refreshToken) throw new Error('No Tokens')
         const newToken = await getNewToken(refreshToken).then((res) => res.data)
         setNewToken(newToken)
     }
