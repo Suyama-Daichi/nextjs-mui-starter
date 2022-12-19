@@ -1,24 +1,19 @@
 import Page from '@/components/Page'
 import { literals } from '@/ui/Literals'
-import {
-    Button,
-    Divider,
-    TextField,
-    Typography,
-    Unstable_Grid2,
-} from '@mui/material'
+import { Divider, TextField, Typography, Unstable_Grid2 } from '@mui/material'
 import useUser from '@/hooks/useUser'
 import { AuthCard } from '@/components/Auth.Card'
 import { User } from '@/models/User.response'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { schema } from '@/schema/forms/editUser'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { updateUser } from '@/pages/api/user.api'
 import { getIdFromIdToken } from '@/utils/jwtHelper'
 import { useRequireLogin } from '@/hooks/useRequireLogin'
 import { Spinner } from '@/components/Spinner'
 import { ErrorAlert } from '@/components/ErrorAlert'
+import Button from '@/components/Button'
 
 const MyProfile = () => {
     useRequireLogin()
@@ -53,17 +48,23 @@ const ListUserDetailData = ({ data }: Props) => {
         resolver: yupResolver(schema),
     })
 
+    const [loading, setLoading] = useState(false)
+
     const onSubmit: SubmitHandler<User> = async (data) => {
+        setLoading(true)
         const id = getIdFromIdToken()
         if (!id) {
             alert('更新に失敗しました')
+            setLoading(false)
             return
         }
         const result = await updateUser(id, data).catch((e) => {
             console.error(e)
+            setLoading(false)
             alert('更新に失敗しました')
         })
         if (result) alert('更新しました')
+        setLoading(false)
     }
     useEffect(() => {
         setValue('last_name', data.last_name)
@@ -95,7 +96,11 @@ const ListUserDetailData = ({ data }: Props) => {
                 </Unstable_Grid2>
             </Unstable_Grid2>
             <Unstable_Grid2 xs display="flex" justifyContent="center">
-                <Button variant="contained" onClick={handleSubmit(onSubmit)}>
+                <Button
+                    loading={loading}
+                    variant="contained"
+                    onClick={handleSubmit(onSubmit)}
+                >
                     変更
                 </Button>
             </Unstable_Grid2>

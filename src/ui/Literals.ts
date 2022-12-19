@@ -1,6 +1,6 @@
 export const literals = {
-    brand: 'Next.js + MUI',
-    defaultPageDescription: 'Next.js + MUI starter template.',
+    brand: 'HC Cloud(開発版)',
+    defaultPageDescription: 'HC Cloud(開発版)',
     socials: {
         emailInfo: 'info@void.com',
         mailtoEmailInfo: 'mailto:info@void.com',

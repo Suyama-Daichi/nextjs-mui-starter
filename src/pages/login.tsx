@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { VisibilityOff, Visibility } from '@mui/icons-material'
 import {
-    Button,
     IconButton,
     InputAdornment,
     Link,
@@ -17,9 +16,11 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { LoginInput, schema } from '@/schema/forms/login'
 import { useRouter } from 'next/router'
 import { AuthCard } from '@/components/Auth.Card'
+import Button from '@/components/Button'
 
 const Login = () => {
     const [visiblePassword, setVisiblePassword] = useState(false)
+    const [loading, setLoading] = useState(false)
     const { loginHandler } = useAuth()
     const {
         register,
@@ -35,10 +36,13 @@ const Login = () => {
     }
 
     const onSubmit: SubmitHandler<LoginInput> = async (data) => {
+        setLoading(true)
         const jwt = await loginHandler(data).catch(() => {
             alert('ログインに失敗しました')
+            setLoading(false)
         })
         if (!jwt) return
+        setLoading(false)
         router.push('/dashboard')
     }
 
@@ -127,6 +131,7 @@ const Login = () => {
                         xs={12}
                     >
                         <Button
+                            loading={loading}
                             size="large"
                             variant="contained"
                             onClick={handleSubmit(onSubmit)}
