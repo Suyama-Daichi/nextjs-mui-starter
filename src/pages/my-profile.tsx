@@ -1,6 +1,6 @@
 import { Page } from '@/components/Layout'
 import { literals } from '@/ui/Literals'
-import { Divider, TextField, Typography, Unstable_Grid2 } from '@mui/material'
+import { TextField, Typography, Unstable_Grid2 } from '@mui/material'
 import useUser from '@/hooks/useUser'
 import { AuthCard } from '@/components/Card'
 import { User } from '@/models/User.response'
@@ -29,7 +29,6 @@ const MyProfile = () => {
     if (isLoading || !user) return <Spinner />
     return (
         <Page title={`${literals.brand} - 自分の情報`} description="my profile">
-            <Divider sx={{ marginY: 2 }} />
             <AuthCard title="自分の情報">
                 <ListUserDetailData data={user} />
             </AuthCard>

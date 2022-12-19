@@ -1,6 +1,5 @@
 import React, { FC, ReactNode } from 'react'
 import Head from 'next/head'
-import ShortHeader from '@components/ShortHeader'
 import { MiniSideNavBar } from '@/components/Layout'
 import { Box } from '@mui/material'
 import { SWRConfig } from 'swr'
@@ -11,7 +10,6 @@ interface Props {
     description: string
     navbarLinks?: ReactNode
     navbarMenu?: boolean
-    header?: ReactNode
     children?: ReactNode
     slideNavbar?: boolean
     fallback?: {
@@ -22,7 +20,6 @@ interface Props {
 const defaultProps: Props = {
     title: '',
     description: '',
-    header: <ShortHeader />,
     navbarLinks: undefined,
     navbarMenu: false,
     slideNavbar: false,

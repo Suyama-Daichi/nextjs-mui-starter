@@ -2,19 +2,23 @@ import { Button } from '@mui/material'
 import type { NextPage } from 'next'
 
 import { literals } from '@/ui/Literals'
-import LandingPage from '@/components/LandingPage'
+import Head from 'next/head'
 
 const Landing: NextPage = () => {
     return (
-        <LandingPage
-            title={literals.brand}
-            description={literals.defaultPageDescription}
-        >
+        <>
+            <Head>
+                <title>{literals.brand}</title>
+                <meta
+                    name="description"
+                    content={literals.defaultPageDescription}
+                />
+            </Head>
             <Button href={'/dashboard'}>ダッシュボード</Button>
             <Button variant="contained" href={'/login'}>
                 ログイン
             </Button>
-        </LandingPage>
+        </>
     )
 }
 

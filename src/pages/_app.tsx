@@ -2,8 +2,6 @@ import '@/styles/globals.css'
 import { AppProps } from 'next/app'
 import React, { FC, ReactElement } from 'react'
 import { StyledEngineProvider } from '@mui/material/styles'
-import { Provider as ReduxProvider } from 'react-redux'
-import { store } from '@/ui/redux/store'
 import { CacheProvider } from '@emotion/react'
 import createCache from '@emotion/cache'
 import { ChangeTheme, SWRConfig } from '@/components/Config'
@@ -23,16 +21,14 @@ const MyApp: FC<AppProps> = ({ Component, pageProps }): ReactElement => {
             <CacheProvider value={cache}>
                 <ChangeTheme>
                     <CssBaseline />
-                    <ReduxProvider store={store}>
-                        <Background>
-                            <RecoilRoot>
-                                <SWRConfig>
-                                    <Component {...pageProps} />
-                                    <SnackBar />
-                                </SWRConfig>
-                            </RecoilRoot>
-                        </Background>
-                    </ReduxProvider>
+                    <Background>
+                        <RecoilRoot>
+                            <SWRConfig>
+                                <Component {...pageProps} />
+                                <SnackBar />
+                            </SWRConfig>
+                        </RecoilRoot>
+                    </Background>
                 </ChangeTheme>
             </CacheProvider>
         </StyledEngineProvider>
