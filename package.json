@@ -9,7 +9,7 @@
         "start": "next start",
         "lint": "eslint __mocks__ src",
         "lint:fix": "eslint __mocks__ src --fix",
-        "test": "jest",
+        "test": "jest --passWithNoTests",
         "test:watch": "jest --watch",
         "prod": "next build && next start"
     },
