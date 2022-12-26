@@ -38,27 +38,27 @@ const SideNavMenu = [
     {
         text: '自分の情報',
         icon: <PersonIcon />,
-        page: '/my-profile',
+        path: '/my-profile',
     },
     {
         text: 'レポート',
         icon: <PersonIcon />,
-        page: undefined,
+        path: undefined,
     },
     {
         text: 'ランキング',
         icon: <PersonIcon />,
-        page: undefined,
+        path: undefined,
     },
     {
         text: '準拠度チェッカー',
         icon: <PersonIcon />,
-        page: undefined,
+        path: undefined,
     },
     {
         text: '認証取得',
         icon: <PersonIcon />,
-        page: undefined,
+        path: undefined,
     },
     {
         text: 'ユーザーの追加',
@@ -190,7 +190,7 @@ export const MiniSideNavBar = ({ children }: DrawerProps) => {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {SideNavMenu.map(({ text, icon, page }) => (
+                    {SideNavMenu.map(({ text, icon, path }) => (
                         <ListItem
                             key={text}
                             disablePadding
@@ -198,8 +198,8 @@ export const MiniSideNavBar = ({ children }: DrawerProps) => {
                         >
                             <ListItemButton
                                 onClick={() =>
-                                    typeof page === 'string' &&
-                                    router.push(page)
+                                    typeof path === 'string' &&
+                                    router.push(path)
                                 }
                                 sx={{
                                     minHeight: 48,
