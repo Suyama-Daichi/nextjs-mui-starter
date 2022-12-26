@@ -12,8 +12,11 @@ import Cookies from 'js-cookie'
 import { ForgotPasswordEmail } from '@/schema/forms/forgotPassword'
 import { ResetPasswordInput } from '@/schema/forms/resetPassword'
 import { AddUserInput } from '@/schema/forms/addUser'
+import { useRouter } from 'next/router'
 
 export const useAuth = () => {
+    const router = useRouter()
+
     const loginHandler = async (loginInput: LoginInput) => {
         const { email: name, password } = loginInput
         const {
@@ -26,6 +29,13 @@ export const useAuth = () => {
         Cookies.set('idToken', idToken)
         Cookies.set('refreshToken', refreshToken)
         return accessJwt
+    }
+
+    const logoutHandler = () => {
+        Cookies.remove('accessToken')
+        Cookies.remove('idToken')
+        Cookies.remove('refreshToken')
+        router.replace('/login')
     }
 
     const addUserHandler = async (loginInput: AddUserInput) => {
@@ -61,6 +71,7 @@ export const useAuth = () => {
 
     return {
         loginHandler,
+        logoutHandler,
         addUserHandler,
         forgotPasswordHandler,
         restPasswordHandler,

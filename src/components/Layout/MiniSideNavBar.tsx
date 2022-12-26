@@ -22,17 +22,16 @@ import React from 'react'
 import {
     ChevronRight as ChevronRightIcon,
     ChevronLeft as ChevronLeftIcon,
-    Inbox as InboxIcon,
-    Mail as MailIcon,
     Menu as MenuIcon,
     Person as PersonIcon,
     AddBox,
+    LogoutRounded,
 } from '@mui/icons-material'
-import { Logout } from '@/components/Button'
 import { useRouter } from 'next/router'
 import { literals } from '@/constants'
 import { Role } from '@/models/Role.enum'
 import { atom, useRecoilState } from 'recoil'
+import { useAuth } from '@/hooks/useAuth'
 const drawerWidth = 240
 
 const sideNavBarOpenAtom = atom({ key: 'sideNavBarOpen', default: true })
@@ -145,6 +144,7 @@ export const MiniSideNavBar = ({ children }: DrawerProps) => {
     const theme = useTheme()
     const router = useRouter()
     const [open, setOpen] = useRecoilState(sideNavBarOpenAtom)
+    const { logoutHandler } = useAuth()
 
     const handleDrawerOpen = () => {
         setOpen(true)
@@ -208,7 +208,6 @@ export const MiniSideNavBar = ({ children }: DrawerProps) => {
                                 }
                                 sx={{
                                     minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
                                     px: 2.5,
                                 }}
                             >
@@ -231,16 +230,16 @@ export const MiniSideNavBar = ({ children }: DrawerProps) => {
                 </List>
                 <Divider />
                 <List>
-                    {['ログアウト'].map((text, index) => (
+                    {['ログアウト'].map((text) => (
                         <ListItem
                             key={text}
                             disablePadding
                             sx={{ display: 'block' }}
                         >
                             <ListItemButton
+                                onClick={logoutHandler}
                                 sx={{
                                     minHeight: 48,
-                                    justifyContent: open ? 'initial' : 'center',
                                     px: 2.5,
                                 }}
                             >
@@ -251,13 +250,11 @@ export const MiniSideNavBar = ({ children }: DrawerProps) => {
                                         justifyContent: 'center',
                                     }}
                                 >
-                                    {index % 2 === 0 ? (
-                                        <InboxIcon />
-                                    ) : (
-                                        <MailIcon />
-                                    )}
+                                    <LogoutRounded />
                                 </ListItemIcon>
-                                <Logout sx={{ opacity: open ? 1 : 0 }} />
+                                <Typography sx={{ opacity: open ? 1 : 0 }}>
+                                    {text}
+                                </Typography>
                             </ListItemButton>
                         </ListItem>
                     ))}
