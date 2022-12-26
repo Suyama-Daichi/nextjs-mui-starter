@@ -19,56 +19,20 @@ import {
 } from '@mui/material'
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
 import React from 'react'
-import {
-    ChevronRight as ChevronRightIcon,
-    ChevronLeft as ChevronLeftIcon,
-    Menu as MenuIcon,
-    Person as PersonIcon,
-    AddBox,
-    LogoutRounded,
-} from '@mui/icons-material'
+
 import { useRouter } from 'next/router'
-import { literals } from '@/constants'
-import { Role } from '@/models/Role.enum'
+import { literals, SideNavMenu } from '@/constants'
 import { atom, useRecoilState } from 'recoil'
 import { useAuth } from '@/hooks/useAuth'
+import {
+    ChevronLeft,
+    ChevronRight,
+    LogoutRounded,
+    Menu,
+} from '@mui/icons-material'
 const drawerWidth = 240
 
 const sideNavBarOpenAtom = atom({ key: 'sideNavBarOpen', default: true })
-
-const SideNavMenu = [
-    {
-        text: '自分の情報',
-        icon: <PersonIcon />,
-        path: '/my-profile',
-    },
-    {
-        text: 'ページ1',
-        icon: <PersonIcon />,
-        path: 'privacy',
-    },
-    {
-        text: 'ページ2',
-        icon: <PersonIcon />,
-        path: undefined,
-    },
-    {
-        text: 'ページ3',
-        icon: <PersonIcon />,
-        path: undefined,
-    },
-    {
-        text: 'ページ4',
-        icon: <PersonIcon />,
-        path: undefined,
-    },
-    {
-        text: 'ページ5',
-        icon: <AddBox />,
-        page: '/add-user',
-        role: [Role.SYSTEM_ADMIN],
-    },
-]
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: drawerWidth,
@@ -169,7 +133,7 @@ export const MiniSideNavBar = ({ children }: DrawerProps) => {
                             ...(open && { display: 'none' }),
                         }}
                     >
-                        <MenuIcon />
+                        <Menu />
                     </IconButton>
                     <Typography
                         variant="h6"
@@ -187,15 +151,15 @@ export const MiniSideNavBar = ({ children }: DrawerProps) => {
                 <DrawerHeader>
                     <IconButton onClick={handleDrawerClose}>
                         {theme.direction === 'rtl' ? (
-                            <ChevronRightIcon />
+                            <ChevronRight />
                         ) : (
-                            <ChevronLeftIcon />
+                            <ChevronLeft />
                         )}
                     </IconButton>
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {SideNavMenu.map(({ text, icon, path }) => (
+                    {SideNavMenu.map(({ text, icon: Icon, path }) => (
                         <ListItem
                             key={text}
                             disablePadding
@@ -218,7 +182,7 @@ export const MiniSideNavBar = ({ children }: DrawerProps) => {
                                         justifyContent: 'center',
                                     }}
                                 >
-                                    {icon}
+                                    <Icon />
                                 </ListItemIcon>
                                 <ListItemText
                                     primary={text}
