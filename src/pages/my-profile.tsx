@@ -14,16 +14,17 @@ import { useRequireLogin } from '@/hooks/useRequireLogin'
 import { Spinner } from '@/components/Feedback'
 import { useSnack } from '@/hooks/useSnack'
 import { Button } from '@/components/Button'
+import { useError } from '@/hooks/useError'
 
 const MyProfile = () => {
     useRequireLogin()
     const id = getIdFromIdToken()
     const { user, isLoading, isError } = useUser(id)
-    const { openErrorSnackHandler } = useSnack()
+    const errorHandler = useError()
 
     useEffect(() => {
-        if (isError) openErrorSnackHandler('エラーが発生しました')
-    }, [isError, openErrorSnackHandler])
+        if (isError) errorHandler()
+    }, [errorHandler, isError])
 
     // TODO: `!user`を消したい
     if (isLoading || !user) return <Spinner />
