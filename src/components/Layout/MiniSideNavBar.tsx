@@ -32,7 +32,10 @@ import { Logout } from '@/components/Button'
 import { useRouter } from 'next/router'
 import { literals } from '@/constants'
 import { Role } from '@/models/Role.enum'
+import { atom, useRecoilState } from 'recoil'
 const drawerWidth = 240
+
+const sideNavBarOpenAtom = atom({ key: 'sideNavBarOpen', default: true })
 
 const SideNavMenu = [
     {
@@ -41,27 +44,27 @@ const SideNavMenu = [
         path: '/my-profile',
     },
     {
-        text: 'レポート',
+        text: 'ページ1',
+        icon: <PersonIcon />,
+        path: 'privacy',
+    },
+    {
+        text: 'ページ2',
         icon: <PersonIcon />,
         path: undefined,
     },
     {
-        text: 'ランキング',
+        text: 'ページ3',
         icon: <PersonIcon />,
         path: undefined,
     },
     {
-        text: '準拠度チェッカー',
+        text: 'ページ4',
         icon: <PersonIcon />,
         path: undefined,
     },
     {
-        text: '認証取得',
-        icon: <PersonIcon />,
-        path: undefined,
-    },
-    {
-        text: 'ユーザーの追加',
+        text: 'ページ5',
         icon: <AddBox />,
         page: '/add-user',
         role: [Role.SYSTEM_ADMIN],
@@ -141,7 +144,7 @@ const Drawer = styled(MuiDrawer, {
 export const MiniSideNavBar = ({ children }: DrawerProps) => {
     const theme = useTheme()
     const router = useRouter()
-    const [open, setOpen] = React.useState(false)
+    const [open, setOpen] = useRecoilState(sideNavBarOpenAtom)
 
     const handleDrawerOpen = () => {
         setOpen(true)
@@ -173,6 +176,8 @@ export const MiniSideNavBar = ({ children }: DrawerProps) => {
                         noWrap
                         component="div"
                         color={'black'}
+                        onClick={() => router.push('/dashboard')}
+                        sx={{ cursor: 'pointer' }}
                     >
                         {literals.brand}
                     </Typography>
